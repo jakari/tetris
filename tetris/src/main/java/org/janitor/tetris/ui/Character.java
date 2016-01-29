@@ -18,12 +18,25 @@ public class Character {
                 CharacterPosition.px(1),
                 CharacterPosition.px(2)
         );
+
+        g.fillRect(
+                p.x+CharacterPosition.FONT_SPACING_X+CharacterPosition.FONT_X,
+                p.y+7,
+                CharacterPosition.px(1),
+                CharacterPosition.px(2)
+        );
     }
 
     public void block(Position p, Graphics g) {
         g.setColor(charColor);
         g.fillRect(
                 p.x,
+                p.y,
+                CharacterPosition.px(5),
+                CharacterPosition.px(9)
+        );
+        g.fillRect(
+                p.x+CharacterPosition.FONT_SPACING_X+CharacterPosition.FONT_X,
                 p.y,
                 CharacterPosition.px(5),
                 CharacterPosition.px(9)

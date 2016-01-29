@@ -1,3 +1,9 @@
 # Tetris
 
-A Tetris clone created with Java. See [here](dokumentointi/TetrisKuvausJaRakenne.md) for more information.
+Tarkoituksena on saada tunnelmaltaan peli legendaarisesta tetriksestä, joka on mahdollisimman lähellä ensimmäistä Tetris-versiota.
+
+### Dokumentaatio ###
+
+Dokumentaatio sijaitsee [täällä](dokumentointi/TetrisKuvausJaRakenne.md).
+
+Käytetyt tunnit löytyvät [täällä](dokumentointi/tuntikirjaukset.md).

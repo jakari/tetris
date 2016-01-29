@@ -8,7 +8,7 @@ public class CharacterPosition extends Position {
     }
 
     public static int PIXEL_SIZE = 2;
-    public static int FONT_X = 5;
+    public static int FONT_X = 5+2+5;
     public static int FONT_Y = 9;
     public static int FONT_SPACING_X = 2;
     public static int FONT_SPACING_Y = 5;
