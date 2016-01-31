@@ -19,15 +19,16 @@ public class Window implements Runnable {
 
         frame.setLayout(new BorderLayout());
 
-        GraphicsDevice gd =
+        // To go fullscreen uncomment this
+        /*GraphicsDevice gd =
                 GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+        frame.setUndecorated(true);
+        gd.setFullScreenWindow(frame); */
 
         JPanel center = new JPanel(new GridBagLayout());
         center.add(panel, new GridBagConstraints());
-        center.setBackground(Color.darkGray);
+        center.setBackground(Color.black);
 
-
-        // frame.setUndecorated(true);
         frame.setResizable(false);
         frame.setMinimumSize(new Dimension(800, 600));
         frame.add(center);
