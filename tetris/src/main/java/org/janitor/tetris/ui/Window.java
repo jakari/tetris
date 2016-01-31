@@ -18,7 +18,6 @@ public class Window implements Runnable {
         main.setBackground(Color.BLACK);
 
         frame.setLayout(new BorderLayout());
-        System.out.println(panel.isDoubleBuffered());
 
         GraphicsDevice gd =
                 GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
