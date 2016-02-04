@@ -1,40 +1,43 @@
 package org.janitor.tetris.model;
 
+import org.janitor.tetris.model.tetrominos.Tetromino;
 import org.janitor.tetris.ui.GameBoard;
-import org.janitor.tetris.ui.Position;
 
 public class Game {
-    private Position position;
-    private boolean[][] board;
+    private TetrominoRandomizer randomizer;
+    private Board board;
     private GameBoard view;
+    private Tetromino tetromino;
 
-    public Game(GameBoard view) {
-        board = new boolean[20][10];
-        position = new Position(4, 0);
+    public Game(GameBoard view, TetrominoRandomizer randomizer, Board board) {
+        this.board = board;
         this.view = view;
-    }
+        this.randomizer = randomizer;
 
-    public void start() {
-        this.view.update(board);
+        tetromino = randomizer.getNextTetromino();
+        repaint();
     }
 
     public void tick() {
-        position = new Position(position.x, position.y+1);
+        tetromino.getGridPosition().y++;
+        repaint();
     }
 
-    public Position getPosition() {
-        return position;
+    private void repaint() {
+        this.view.update(board.addTetromino(tetromino).getGrid());
     }
 
     public void moveLeft() {
-        if (position.x > 0) {
-            position = new Position(position.x-1, position.y);
+        GridPosition p = tetromino.getGridPosition();
+        if (p.x > 0) {
+            p.x--;
         }
     }
 
     public void moveRight() {
-        if (position.x < 9) {
-            position = new Position(position.x+1, position.y);
+        GridPosition p = tetromino.getGridPosition();
+        if (p.x < 9) {
+            p.x++;
         }
     }
 }

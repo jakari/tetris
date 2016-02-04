@@ -13,17 +13,10 @@ public class Character {
         g.setColor(charColor);
 
         g.fillRect(
-                p.x+3,
-                p.y+7,
-                CharacterPosition.px(1),
-                CharacterPosition.px(2)
-        );
-
-        g.fillRect(
-                p.x+CharacterPosition.FONT_SPACING_X+CharacterPosition.FONT_X,
-                p.y+7,
-                CharacterPosition.px(1),
-                CharacterPosition.px(2)
+                p.x+CharacterPosition.px(2)+CharacterPosition.FONT_X,
+                p.y+CharacterPosition.px(8),
+                1,
+                CharacterPosition.px(1)
         );
     }
 

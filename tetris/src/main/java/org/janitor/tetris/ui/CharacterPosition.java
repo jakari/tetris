@@ -17,7 +17,7 @@ public class CharacterPosition extends Position {
         return PIXEL_SIZE*pixels;
     }
 
-    private static int xCharPosToPx(int x) {
+    public static int xCharPosToPx(int x) {
         return px((x*FONT_X)+(x * FONT_SPACING_X));
     }
 

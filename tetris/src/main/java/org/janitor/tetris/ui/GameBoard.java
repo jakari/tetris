@@ -15,7 +15,7 @@ public class GameBoard extends JPanel {
     public GameBoard() {
         super();
         setBackground(Color.BLACK);
-        setPreferredSize(new Dimension(154* CharacterPosition.PIXEL_SIZE, 280* CharacterPosition.PIXEL_SIZE));
+        setPreferredSize(new Dimension(138* CharacterPosition.PIXEL_SIZE, 275* CharacterPosition.PIXEL_SIZE));
         chars = new Character();
     }
 
@@ -28,20 +28,27 @@ public class GameBoard extends JPanel {
                 if (board[y][x]) {
                     chars.block(new CharacterPosition(x, y), graphics);
                     chars.block(new CharacterPosition(x, y), graphics);
-                } else if (x % 2 != 0) {
+                } else {
                     chars.dot(new CharacterPosition(x, y), graphics);
                 }
             }
         }
 
+        /*
+        chars.block(new CharacterPosition(0, 3), graphics);
+        chars.block(new CharacterPosition(0, 4), graphics);
+        chars.block(new CharacterPosition(1, 3), graphics);
+        chars.block(new CharacterPosition(2, 3), graphics);
+        chars.block(new CharacterPosition(3, 3), graphics);
+        chars.block(new CharacterPosition(4, 3), graphics);
+        chars.block(new CharacterPosition(5, 3), graphics);
+        chars.block(new CharacterPosition(6, 3), graphics);
+        chars.block(new CharacterPosition(7, 3), graphics);
         chars.block(new CharacterPosition(8, 3), graphics);
         chars.block(new CharacterPosition(9, 3), graphics);
-        chars.block(new CharacterPosition(10, 3), graphics);
-        chars.block(new CharacterPosition(11, 3), graphics);
-        chars.block(new CharacterPosition(12, 3), graphics);
-        chars.block(new CharacterPosition(13, 3), graphics);
-        chars.block(new CharacterPosition(12, 4), graphics);
-        chars.block(new CharacterPosition(13, 4), graphics);
+        chars.block(new CharacterPosition(8, 4), graphics);
+        chars.block(new CharacterPosition(9, 4), graphics);
+        */
     }
 
     public void update(boolean[][] board) {
