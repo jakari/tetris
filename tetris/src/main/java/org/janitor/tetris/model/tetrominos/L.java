@@ -7,7 +7,7 @@ public class L extends Tetromino {
         p = new GridPosition(3, 0);
         blockGrid = new boolean[][] {
             {true, true, true},
-            {true}
+            {true, false, false}
         };
     }
 }

@@ -27,12 +27,15 @@ public class GameTest {
         tetromino = mock(Tetromino.class);
         staticBoard = mock(Board.class);
         paintedBoard = mock(Board.class);
-        grid = new boolean[1][1];
+        grid = new boolean[3][3];
 
-        when(tetromino.getBlockGrid()).thenReturn(new boolean[][] {{true}});
+        when(tetromino.getBlockGrid()).thenReturn(new boolean[][] {{true, true}, {true, true}});
         when(tetromino.getGridPosition()).thenReturn(tetrominoPosition);
+        when(tetromino.getWidth()).thenReturn(2);
+        when(tetromino.getHeight()).thenReturn(1);
         when(r.getNextTetromino()).thenReturn(tetromino);
         when(staticBoard.addTetromino(tetromino)).thenReturn(paintedBoard);
+        when(staticBoard.getGrid()).thenReturn(grid);
         when(paintedBoard.getGrid()).thenReturn(grid);
 
         game = new Game(view, r, staticBoard);
@@ -59,43 +62,22 @@ public class GameTest {
     }
 
     @Test
+    public void doesntTickOverGrid() {
+        when(tetromino.getHeight()).thenReturn(2);
+        game.tick();
+        assertEquals(1, tetrominoPosition.y);
+        assertFalse(game.isOver());
+
+        game.tick();
+        assertEquals(1, tetrominoPosition.y);
+        assertTrue(game.isOver());
+    }
+
+    @Test
     public void tickDoesntChangeXPosition() {
         assertEquals(4, tetrominoPosition.x);
         game.tick();
         assertEquals(4, tetrominoPosition.x);
-    }
-
-    @Test
-    public void movesBlockToLeft() {
-        tetrominoPosition.x = 4;
-
-        game.moveLeft();
-        assertEquals(3, tetrominoPosition.x);
-        game.moveLeft();
-        assertEquals(2, tetrominoPosition.x);
-    }
-
-    @Test
-    public void doesntAdvanceOverLeftBoardBorder() {
-        tetrominoPosition.x = 0;
-        game.moveLeft();
-        game.moveLeft();
-        game.moveLeft();
-        game.moveLeft();
-        game.moveLeft();
-        assertEquals(0, tetrominoPosition.x);
-    }
-
-    @Test
-    public void doesntAdvanceOverRightBoardBorder() {
-        tetrominoPosition.x = 4;
-        game.moveRight();
-        game.moveRight();
-        game.moveRight();
-        game.moveRight();
-        game.moveRight();
-        game.moveRight();
-        assertEquals(9, tetrominoPosition.x);
     }
 
     private void shouldRepaintBoard() {

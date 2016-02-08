@@ -8,36 +8,39 @@ public class Game {
     private Board board;
     private GameBoard view;
     private Tetromino tetromino;
+    private Movement movement;
+    private boolean isRunning = true;
 
     public Game(GameBoard view, TetrominoRandomizer randomizer, Board board) {
         this.board = board;
         this.view = view;
         this.randomizer = randomizer;
+        this.movement = new Movement(this);
+        view.addKeyListener(this.movement);
 
-        tetromino = randomizer.getNextTetromino();
-        repaint();
+        nextTetromino();
     }
 
     public void tick() {
-        tetromino.getGridPosition().y++;
-        repaint();
+        if (tetromino.getGridPosition().y+tetromino.getHeight() == this.board.getGrid().length) {
+            this.isRunning = false;
+        } else {
+            tetromino.getGridPosition().y++;
+            update();
+        }
     }
 
-    private void repaint() {
+    public void update() {
         this.view.update(board.addTetromino(tetromino).getGrid());
     }
 
-    public void moveLeft() {
-        GridPosition p = tetromino.getGridPosition();
-        if (p.x > 0) {
-            p.x--;
-        }
+    public boolean isOver() {
+        return !isRunning;
     }
 
-    public void moveRight() {
-        GridPosition p = tetromino.getGridPosition();
-        if (p.x < 9) {
-            p.x++;
-        }
+    private void nextTetromino() {
+        tetromino = randomizer.getNextTetromino();
+        movement.setTetromino(tetromino);
+        update();
     }
 }

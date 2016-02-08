@@ -11,11 +11,11 @@ public class GameTickTask extends TimerTask {
 
     @Override
     public void run() {
-        // Currently in debug mode
-        try {
-            game.tick();
-        } catch (ArrayIndexOutOfBoundsException e) {
+        if (game.isOver()) {
             cancel();
+            return;
         }
+
+        game.tick();
     }
 }

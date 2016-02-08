@@ -5,8 +5,6 @@ import org.janitor.tetris.model.Game;
 import javax.swing.JPanel;
 
 import java.awt.*;
-import java.util.Observable;
-import java.util.Observer;
 
 public class GameBoard extends JPanel {
     private Character chars;
@@ -14,6 +12,7 @@ public class GameBoard extends JPanel {
 
     public GameBoard() {
         super();
+        setFocusable(true);
         setBackground(Color.BLACK);
         setPreferredSize(new Dimension(138* CharacterPosition.PIXEL_SIZE, 275* CharacterPosition.PIXEL_SIZE));
         chars = new Character();

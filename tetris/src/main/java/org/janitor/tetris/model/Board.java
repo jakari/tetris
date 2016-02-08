@@ -1,9 +1,6 @@
 package org.janitor.tetris.model;
 
 import org.janitor.tetris.model.tetrominos.Tetromino;
-import org.janitor.tetris.ui.Position;
-
-import java.util.Arrays;
 
 public class Board  {
     private boolean[][] grid;

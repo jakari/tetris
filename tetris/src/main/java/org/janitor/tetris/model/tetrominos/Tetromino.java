@@ -13,4 +13,12 @@ public abstract class Tetromino {
     public boolean[][] getBlockGrid() {
         return this.blockGrid;
     }
+
+    public int getWidth() {
+        return blockGrid[0].length;
+    }
+
+    public int getHeight() {
+        return blockGrid.length;
+    }
 }
