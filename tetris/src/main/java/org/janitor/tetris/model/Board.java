@@ -42,8 +42,8 @@ public class Board {
         for (int r = 0; r < rows.length; r++) {
             for (int c = 0; c < rows[r].length; c++) {
                 // Write to a existing block only if there is no existing block
-                if (!newGrid[r+p.y][c+p.x]) {
-                    newGrid[r+p.y][c+p.x] = rows[r][c];
+                if (!newGrid[r + p.y][c + p.x]) {
+                    newGrid[r + p.y][c + p.x] = rows[r][c];
                 }
             }
         }
@@ -68,16 +68,16 @@ public class Board {
         if (position.x < 0 || position.y < 0) {
             return true;
         }
-        if (grid.length < gridToCheck.length+position.y) {
+        if (grid.length < gridToCheck.length + position.y) {
             return true;
         }
-        if (grid[0].length < gridToCheck[0].length+position.x) {
+        if (grid[0].length < gridToCheck[0].length + position.x) {
             return true;
         }
 
         for (int r = 0; r < gridToCheck.length; r++) {
             for (int c = 0; c < gridToCheck[r].length; c++) {
-                if (grid[r+position.y][c+position.x] && gridToCheck[r][c]) {
+                if (grid[r + position.y][c + position.x] && gridToCheck[r][c]) {
                     return true;
                 }
             }

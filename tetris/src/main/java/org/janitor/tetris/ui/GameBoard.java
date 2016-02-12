@@ -14,7 +14,7 @@ public class GameBoard extends JPanel {
         super();
         setFocusable(true);
         setBackground(Color.BLACK);
-        setPreferredSize(new Dimension(138* CharacterPosition.PIXEL_SIZE, 275* CharacterPosition.PIXEL_SIZE));
+        setPreferredSize(new Dimension(138 * CharacterPosition.PIXEL_SIZE, 275 * CharacterPosition.PIXEL_SIZE));
         chars = new Character();
     }
 

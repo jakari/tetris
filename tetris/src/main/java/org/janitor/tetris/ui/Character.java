@@ -21,8 +21,8 @@ public class Character {
         g.setColor(charColor);
 
         g.fillRect(
-                p.x+CharacterPosition.px(2)+CharacterPosition.FONT_X,
-                p.y+CharacterPosition.px(8),
+                p.x + CharacterPosition.px(2) + CharacterPosition.FONT_X,
+                p.y + CharacterPosition.px(8),
                 1,
                 CharacterPosition.px(1)
         );
@@ -42,7 +42,7 @@ public class Character {
                 CharacterPosition.px(9)
         );
         g.fillRect(
-                p.x+CharacterPosition.FONT_SPACING_X+CharacterPosition.FONT_X,
+                p.x + CharacterPosition.FONT_SPACING_X + CharacterPosition.FONT_X,
                 p.y,
                 CharacterPosition.px(5),
                 CharacterPosition.px(9)

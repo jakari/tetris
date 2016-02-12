@@ -14,11 +14,11 @@ public class CharacterPosition extends Position {
         super(xCharPosToPx(charX), yCharPosToPx(charY));
     }
 
-    public static int PIXEL_SIZE = 2;
-    public static int FONT_X = 5+2+5;
-    public static int FONT_Y = 9;
-    public static int FONT_SPACING_X = 2;
-    public static int FONT_SPACING_Y = 5;
+    public static final int PIXEL_SIZE = 2;
+    public static final int FONT_X = 5 + 2 + 5;
+    public static final int FONT_Y = 9;
+    public static final int FONT_SPACING_X = 2;
+    public static final int FONT_SPACING_Y = 5;
 
     /**
      * Converts a pixel to real paintable pixels
@@ -26,7 +26,7 @@ public class CharacterPosition extends Position {
      * @return converted pixel size
      */
     public static int px(int pixels) {
-        return PIXEL_SIZE*pixels;
+        return PIXEL_SIZE * pixels;
     }
 
     /**
@@ -35,7 +35,7 @@ public class CharacterPosition extends Position {
      * @return a paintable pixel x axis
      */
     public static int xCharPosToPx(int x) {
-        return px((x*FONT_X)+(x * FONT_SPACING_X));
+        return px((x * FONT_X) + (x * FONT_SPACING_X));
     }
 
     /**

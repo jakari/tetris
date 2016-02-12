@@ -58,7 +58,7 @@ public class Movement implements KeyListener {
     private void moveLeft() {
         GridPosition p = t.getGridPosition();
 
-        if (game.canTetrominoMoveTo(new GridPosition(p.x-1, p.y))) {
+        if (game.canTetrominoMoveTo(new GridPosition(p.x - 1, p.y))) {
             p.x--;
             game.update();
         }
@@ -67,7 +67,7 @@ public class Movement implements KeyListener {
     private void moveRight() {
         GridPosition p = t.getGridPosition();
 
-        if (game.canTetrominoMoveTo(new GridPosition(p.x+1, p.y))) {
+        if (game.canTetrominoMoveTo(new GridPosition(p.x + 1, p.y))) {
             p.x++;
             game.update();
         }
@@ -79,7 +79,7 @@ public class Movement implements KeyListener {
     public void moveDown() {
         GridPosition p = t.getGridPosition();
 
-        if (game.canTetrominoMoveTo(new GridPosition(p.x, p.y+1))) {
+        if (game.canTetrominoMoveTo(new GridPosition(p.x, p.y + 1))) {
             p.y++;
             game.update();
         }
@@ -88,7 +88,7 @@ public class Movement implements KeyListener {
     private void freeFall() {
         GridPosition p = t.getGridPosition();
 
-        while (game.canTetrominoMoveTo(new GridPosition(p.x, p.y+1))) {
+        while (game.canTetrominoMoveTo(new GridPosition(p.x, p.y + 1))) {
             p.y++;
         }
 

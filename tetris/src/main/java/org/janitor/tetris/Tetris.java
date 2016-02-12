@@ -21,6 +21,7 @@ public class Tetris {
                 new Board(new boolean[20][10])
         );
         g.setMovement(new Movement(g));
+        g.nextTetromino();
 
         Timer t = new Timer();
 

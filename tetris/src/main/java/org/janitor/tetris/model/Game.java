@@ -75,11 +75,11 @@ public class Game {
     private boolean canTetrominoMoveDown() {
         // If on last row, tetromino can't move down
         return canTetrominoMoveTo(
-                new GridPosition(
-                    tetromino.getGridPosition().x,
-                    tetromino.getGridPosition().y + 1
-                )
-            );
+            new GridPosition(
+                tetromino.getGridPosition().x,
+                tetromino.getGridPosition().y + 1
+            )
+        );
     }
 
     /**
