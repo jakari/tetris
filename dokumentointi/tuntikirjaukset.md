@@ -7,3 +7,7 @@
 27.1.2016, 2h: Lisää renderöintä
 28.1.2016, 2h: Perus pelilogiikan rakentelu
 29.1.2016, 1h: Pelilogiikan rakentelua
+5.2.2016,  3h: Pelilogiikkaa
+8.2.2016,  2h: Pelialueen rakentamista
+9.2.2016,  2h: Pelialueen rakentamista
+11.2.2016, 3,5h: Testien kirjoittelua ja viimeistelyä.

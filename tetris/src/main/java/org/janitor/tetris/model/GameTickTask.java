@@ -2,6 +2,10 @@ package org.janitor.tetris.model;
 
 import java.util.TimerTask;
 
+/**
+ * The timer for ticking the game
+ * This moves the tetromino down at specified intervals
+ */
 public class GameTickTask extends TimerTask {
     private Game game;
 

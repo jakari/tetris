@@ -1,15 +1,15 @@
 package org.janitor.tetris;
 
-import org.janitor.tetris.model.Board;
-import org.janitor.tetris.model.Game;
-import org.janitor.tetris.model.GameTickTask;
-import org.janitor.tetris.model.TetrominoRandomizer;
+import org.janitor.tetris.model.*;
 import org.janitor.tetris.ui.GameBoard;
 import org.janitor.tetris.ui.Window;
 
 import javax.swing.*;
 import java.util.Timer;
 
+/**
+ * This is the main class to run the game
+ */
 public class Tetris {
     public static void main(String[] args) {
         GameBoard view = new GameBoard();
@@ -20,6 +20,7 @@ public class Tetris {
                 new TetrominoRandomizer(),
                 new Board(new boolean[20][10])
         );
+        g.setMovement(new Movement(g));
 
         Timer t = new Timer();
 

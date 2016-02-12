@@ -3,6 +3,9 @@ package org.janitor.tetris.ui;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * The actual window where the game is painted.
+ */
 public class Window implements Runnable {
     private JPanel panel;
 
@@ -20,6 +23,7 @@ public class Window implements Runnable {
         frame.setLayout(new BorderLayout());
 
         // To go fullscreen uncomment this
+        // Todo still undecided wether fullscreen is desired...
         /*GraphicsDevice gd =
                 GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
         frame.setUndecorated(true);

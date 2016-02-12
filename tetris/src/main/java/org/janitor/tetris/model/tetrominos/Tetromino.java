@@ -2,6 +2,9 @@ package org.janitor.tetris.model.tetrominos;
 
 import org.janitor.tetris.model.GridPosition;
 
+/**
+ * A baseclass for tetrominos to extend.
+ */
 public abstract class Tetromino {
     protected GridPosition p;
     protected boolean[][] blockGrid;

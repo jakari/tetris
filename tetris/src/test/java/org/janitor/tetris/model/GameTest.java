@@ -7,6 +7,7 @@ import org.janitor.tetris.ui.GameBoard;
 import org.janitor.tetris.util.MatchesTwoDimensionalBooleanArray;
 import org.junit.Before;
 import org.junit.Test;
+
 import static org.junit.Assert.*;
 
 public class GameTest {
@@ -18,6 +19,7 @@ public class GameTest {
     private Tetromino tetromino;
     private GridPosition tetrominoPosition;
     private boolean[][] grid;
+    private Movement movement;
 
     @Before
     public void setUp() {
@@ -28,17 +30,35 @@ public class GameTest {
         staticBoard = mock(Board.class);
         paintedBoard = mock(Board.class);
         grid = new boolean[3][3];
+        movement = mock(Movement.class);
 
         when(tetromino.getBlockGrid()).thenReturn(new boolean[][] {{true, true}, {true, true}});
         when(tetromino.getGridPosition()).thenReturn(tetrominoPosition);
         when(tetromino.getWidth()).thenReturn(2);
-        when(tetromino.getHeight()).thenReturn(1);
+        when(tetromino.getHeight()).thenReturn(2);
         when(r.getNextTetromino()).thenReturn(tetromino);
         when(staticBoard.addTetromino(tetromino)).thenReturn(paintedBoard);
+        when(paintedBoard.addTetromino(tetromino)).thenReturn(paintedBoard);
         when(staticBoard.getGrid()).thenReturn(grid);
         when(paintedBoard.getGrid()).thenReturn(grid);
 
         game = new Game(view, r, staticBoard);
+        game.setMovement(movement);
+        game.nextTetromino();
+    }
+
+    @Test
+    public void initializesGameClass() {
+        Movement m = mock(Movement.class);
+        GameBoard b = mock(GameBoard.class);
+        Game g = new Game(b, r, staticBoard);
+
+        g.setMovement(m);
+        verify(b).addKeyListener(m);
+
+        g.nextTetromino();
+        verify(movement, times(1)).setTetromino(tetromino);
+        assertFalse(g.isOver());
     }
 
     @Test
@@ -47,30 +67,21 @@ public class GameTest {
     }
 
     @Test
-    public void tickAdvancesBlockYPosition() {
-        assertEquals(0, tetrominoPosition.y);
-
-        game.tick();
-        assertEquals(1, tetrominoPosition.y);
-
-        shouldRepaintBoard(2);
-
-        game.tick();
-        assertEquals(2, tetrominoPosition.y);
-
-        shouldRepaintBoard(3);
-    }
-
-    @Test
     public void doesntTickOverGrid() {
-        when(tetromino.getHeight()).thenReturn(2);
-        game.tick();
-        assertEquals(1, tetrominoPosition.y);
-        assertFalse(game.isOver());
+        when(staticBoard.doesTetrominoOverlapAtPosition(tetromino, new GridPosition(4, 1))).thenReturn(false);
 
         game.tick();
-        assertEquals(1, tetrominoPosition.y);
-        assertTrue(game.isOver());
+
+        verify(movement, times(1)).moveDown();
+
+        tetromino.getGridPosition().y++;
+
+        when(staticBoard.doesTetrominoOverlapAtPosition(tetromino, new GridPosition(4, 2))).thenReturn(true);
+        game.tick();
+
+        verify(r, times(2)).getNextTetromino();
+
+        verify(movement, times(1)).moveDown();
     }
 
     @Test

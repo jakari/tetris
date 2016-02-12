@@ -1,11 +1,11 @@
 package org.janitor.tetris.ui;
 
-import org.janitor.tetris.model.Game;
-
 import javax.swing.JPanel;
-
 import java.awt.*;
 
+/**
+ * The panel where to do the actual painting of the game
+ */
 public class GameBoard extends JPanel {
     private Character chars;
     private boolean[][] board;
@@ -32,24 +32,12 @@ public class GameBoard extends JPanel {
                 }
             }
         }
-
-        /*
-        chars.block(new CharacterPosition(0, 3), graphics);
-        chars.block(new CharacterPosition(0, 4), graphics);
-        chars.block(new CharacterPosition(1, 3), graphics);
-        chars.block(new CharacterPosition(2, 3), graphics);
-        chars.block(new CharacterPosition(3, 3), graphics);
-        chars.block(new CharacterPosition(4, 3), graphics);
-        chars.block(new CharacterPosition(5, 3), graphics);
-        chars.block(new CharacterPosition(6, 3), graphics);
-        chars.block(new CharacterPosition(7, 3), graphics);
-        chars.block(new CharacterPosition(8, 3), graphics);
-        chars.block(new CharacterPosition(9, 3), graphics);
-        chars.block(new CharacterPosition(8, 4), graphics);
-        chars.block(new CharacterPosition(9, 4), graphics);
-        */
     }
 
+    /**
+     * Paint the board with the given grid data.
+     * @param board The board to paint
+     */
     public void update(boolean[][] board) {
         this.board = board;
         repaint();

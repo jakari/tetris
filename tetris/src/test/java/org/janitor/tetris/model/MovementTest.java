@@ -2,6 +2,7 @@ package org.janitor.tetris.model;
 
 import org.janitor.tetris.model.tetrominos.Tetromino;
 import org.junit.*;
+import org.mockito.stubbing.OngoingStubbing;
 
 import java.awt.event.KeyEvent;
 
@@ -31,6 +32,8 @@ public class MovementTest {
     public void movesBlockToLeft() {
         tetrominoPosition.x = 4;
 
+        when(game.canTetrominoMoveTo(any())).thenReturn(true);
+
         moveLeft();
         assertEquals(3, tetrominoPosition.x);
         shouldUpdateGame(1);
@@ -43,6 +46,8 @@ public class MovementTest {
     public void movesBlockToRight() {
         tetrominoPosition.x = 4;
 
+        when(game.canTetrominoMoveTo(any())).thenReturn(true);
+
         moveRight();
         assertEquals(5, tetrominoPosition.x);
         shouldUpdateGame(1);
@@ -53,7 +58,13 @@ public class MovementTest {
 
     @Test
     public void doesntAdvanceOverLeftBoardBorder() {
-        tetrominoPosition.x = 0;
+        tetrominoPosition.x = 4;
+
+        canTetrominoMoveTo(3, 0).thenReturn(true);
+        canTetrominoMoveTo(2, 0).thenReturn(true);
+        canTetrominoMoveTo(1, 0).thenReturn(true);
+        canTetrominoMoveTo(0, 0).thenReturn(true);
+        canTetrominoMoveTo(-1, 0).thenReturn(false);
         moveLeft();
         moveLeft();
         moveLeft();
@@ -65,30 +76,85 @@ public class MovementTest {
     @Test
     public void doesntAdvanceOverRightBoardBorder() {
         tetrominoPosition.x = 4;
-        moveRight();
-        moveRight();
+
+        canTetrominoMoveTo(5, 0).thenReturn(true);
+        canTetrominoMoveTo(6, 0).thenReturn(true);
+        canTetrominoMoveTo(7, 0).thenReturn(true);
+        canTetrominoMoveTo(8, 0).thenReturn(false);
         moveRight();
         moveRight();
         moveRight();
         moveRight();
 
         // The tetromnino is set to 2 width, so the maximum position is 7
-        assertEquals(8, tetrominoPosition.x);
+        assertEquals(7, tetrominoPosition.x);
+    }
+
+    @Test
+    public void movesDown() {
+        tetrominoPosition.y = 0;
+
+        canTetrominoMoveTo(4, 1).thenReturn(true);
+        canTetrominoMoveTo(4, 2).thenReturn(true);
+        canTetrominoMoveTo(4, 3).thenReturn(true);
+        movement.moveDown();
+        movement.moveDown();
+        movement.moveDown();
+
+        verify(game, times(3)).update();
+
+        assertEquals(3, tetrominoPosition.y);
+    }
+
+    @Test
+    public void stopsMoveDownWhenCannotMove() {
+        tetrominoPosition.y = 0;
+
+        canTetrominoMoveTo(4, 1).thenReturn(true);
+        canTetrominoMoveTo(4, 2).thenReturn(false);
+        movement.moveDown();
+        movement.moveDown();
+        movement.moveDown();
+
+        verify(game, times(1)).update();
+
+        assertEquals(1, tetrominoPosition.y);
+    }
+
+    @Test
+    public void freeFallMovesDownUntilCannotMove() {
+        canTetrominoMoveTo(4, 1).thenReturn(true);
+        canTetrominoMoveTo(4, 2).thenReturn(true);
+        canTetrominoMoveTo(4, 3).thenReturn(true);
+        canTetrominoMoveTo(4, 4).thenReturn(false);
+
+        // The 'S' character is for tetromino free fall
+        pressKey(83);
+
+        verify(game, times(1)).update();
+
+        assertEquals(3, tetrominoPosition.y);
     }
 
     private void moveLeft() {
-        KeyEvent e = mock(KeyEvent.class);
-        when(e.getKeyCode()).thenReturn(65);
-        movement.keyPressed(e);
+        pressKey(65);
     }
 
     private void moveRight() {
+        pressKey(68);
+    }
+
+    private void pressKey(int keyCode) {
         KeyEvent e = mock(KeyEvent.class);
-        when(e.getKeyCode()).thenReturn(68);
+        when(e.getKeyCode()).thenReturn(keyCode);
         movement.keyPressed(e);
     }
 
     private void shouldUpdateGame(int count) {
         verify(game, times(count)).update();
+    }
+
+    private OngoingStubbing<Boolean> canTetrominoMoveTo(int  x, int y) {
+        return when(game.canTetrominoMoveTo(new GridPosition(x, y)));
     }
 }
