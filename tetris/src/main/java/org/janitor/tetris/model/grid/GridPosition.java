@@ -1,20 +1,21 @@
-package org.janitor.tetris.model;
+package org.janitor.tetris.model.grid;
 
 /**
  * GridPosition specifies a position on the board grid.
  */
 public class GridPosition {
     /**
-     * The x axis of the position
+     * The x axis of the position.
      */
     public int x;
 
     /**
-     * The y axis of the position
+     * The y axis of the position.
      */
     public int y;
 
     /**
+     * Constructor.
      * @param x The x axis of the position
      * @param y The y axis of the position
      */

@@ -1,5 +1,6 @@
-package org.janitor.tetris.model;
+package org.janitor.tetris.model.game;
 
+import org.janitor.tetris.model.grid.GridPosition;
 import org.janitor.tetris.model.tetrominos.Tetromino;
 
 import java.awt.event.KeyEvent;
@@ -13,6 +14,7 @@ public class Movement implements KeyListener {
     private Tetromino t;
 
     /**
+     * Constructor.
      * @param game The game to init movement into
      */
     public Movement(Game game) {
@@ -20,7 +22,7 @@ public class Movement implements KeyListener {
     }
 
     /**
-     * Set the tetromino to move
+     * Set the tetromino to move.
      * @param tetromino The tetromino initialize movement to.
      */
     public void setTetromino(Tetromino tetromino) {
@@ -46,6 +48,9 @@ public class Movement implements KeyListener {
             // The S character
             case 83:
                 freeFall();
+                break;
+            case 87:
+                game.rotateTetromino();
                 break;
         }
     }

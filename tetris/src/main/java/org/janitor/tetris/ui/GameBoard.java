@@ -4,12 +4,15 @@ import javax.swing.JPanel;
 import java.awt.*;
 
 /**
- * The panel where to do the actual painting of the game
+ * The panel where to do the actual painting of the game.
  */
 public class GameBoard extends JPanel {
     private Character chars;
     private boolean[][] board;
 
+    /**
+     * Constructor.
+     */
     public GameBoard() {
         super();
         setFocusable(true);

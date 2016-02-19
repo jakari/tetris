@@ -1,4 +1,4 @@
-package org.janitor.tetris.model;
+package org.janitor.tetris.model.game;
 
 import org.junit.*;
 import static org.mockito.Mockito.*;

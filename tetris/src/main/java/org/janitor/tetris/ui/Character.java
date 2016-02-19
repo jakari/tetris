@@ -3,17 +3,20 @@ package org.janitor.tetris.ui;
 import java.awt.*;
 
 /**
- * Character painter - paints characters on a given position
+ * Character painter - paints characters on a given position.
  */
 public class Character {
     private Color charColor;
 
+    /**
+     * Constructor.
+     */
     public Character() {
         charColor = new Color(0xC3FFAF);
     }
 
     /**
-     * paint a dot
+     * paint a dot.
      * @param p the position where to paint the dot
      * @param g The graphics object to use painting on
      */
@@ -29,7 +32,7 @@ public class Character {
     }
 
     /**
-     * paint a block
+     * paint a block.
      * @param p the position where to paint the block
      * @param g The graphics object to use painting on
      */

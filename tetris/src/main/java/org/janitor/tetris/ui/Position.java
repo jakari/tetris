@@ -8,8 +8,9 @@ public class Position {
     public int y;
 
     /**
+     * Constructor.
      * @param x The x axis
-     * @param y The y axia
+     * @param y The y axis
      */
     public Position(int x, int y) {
         this.x = x;

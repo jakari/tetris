@@ -1,5 +1,6 @@
-package org.janitor.tetris.model;
+package org.janitor.tetris.model.game;
 
+import org.janitor.tetris.model.grid.GridPosition;
 import org.janitor.tetris.model.tetrominos.Tetromino;
 import org.junit.*;
 import org.mockito.stubbing.OngoingStubbing;
@@ -107,6 +108,13 @@ public class MovementTest {
     }
 
     @Test
+    public void rotatesTetromino() {
+        rotate();
+
+        verify(game).rotateTetromino();
+    }
+
+    @Test
     public void stopsMoveDownWhenCannotMove() {
         tetrominoPosition.y = 0;
 
@@ -142,6 +150,10 @@ public class MovementTest {
 
     private void moveRight() {
         pressKey(68);
+    }
+
+    private void rotate() {
+        pressKey(87);
     }
 
     private void pressKey(int keyCode) {

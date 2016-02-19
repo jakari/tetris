@@ -1,5 +1,7 @@
-package org.janitor.tetris.model;
+package org.janitor.tetris.model.game;
 
+import org.janitor.tetris.model.grid.Board;
+import org.janitor.tetris.model.grid.GridPosition;
 import org.janitor.tetris.model.tetrominos.Tetromino;
 import org.janitor.tetris.ui.GameBoard;
 
@@ -15,6 +17,7 @@ public class Game {
     private boolean isRunning = true;
 
     /**
+     * Constructor.
      *
      * @param view          The view to use for the game
      * @param randomizer    A tetromino randomizer
@@ -49,14 +52,14 @@ public class Game {
     }
 
     /**
-     * Initializes a screen refresh
+     * Initializes a screen refresh.
      */
     public void update() {
         this.view.update(board.addTetromino(tetromino).getGrid());
     }
 
     /**
-     * Checks if the game is still running or is it over
+     * Checks if the game is still running or is it over.
      * @return Returns true if game is over
      */
     public boolean isOver() {
@@ -64,12 +67,24 @@ public class Game {
     }
 
     /**
-     * Sets a new random tetromino for the game
+     * Sets a new random tetromino for the game.
      */
     public void nextTetromino() {
         tetromino = randomizer.getNextTetromino();
         movement.setTetromino(tetromino);
         update();
+    }
+
+    /**
+     * Rotates the tetromino to the left.
+     */
+    public void rotateTetromino() {
+        boolean[][] rotated = tetromino.getRotatedGridRepresentation();
+
+        if (!board.doesGridOverlapAtPosition(rotated, tetromino.getGridPosition())) {
+            tetromino.rotateLeft();
+            update();
+        }
     }
 
     private boolean canTetrominoMoveDown() {
@@ -83,11 +98,11 @@ public class Game {
     }
 
     /**
-     * Checks wether the current tetromino can move to the given position on the grid
+     * Checks wether the current tetromino can move to the given position on the grid.
      * @param position Position where to place the tetromino
      * @return Returns true if the tetromino can be moved to the specified position, false otherwise
      */
     public boolean canTetrominoMoveTo(GridPosition position) {
-        return !board.doesTetrominoOverlapAtPosition(tetromino, position);
+        return !board.doesGridOverlapAtPosition(tetromino.getBlockGrid(), position);
     }
 }

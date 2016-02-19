@@ -1,9 +1,8 @@
-package org.janitor.tetris.model;
+package org.janitor.tetris.model.grid;
 
 import org.junit.Test;
 
 import static org.junit.Assert.*;
-import static org.mockito.Mockito.*;
 
 public class GridPositionTest {
     @Test

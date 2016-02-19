@@ -9,6 +9,10 @@ import java.awt.*;
 public class Window implements Runnable {
     private JPanel panel;
 
+    /**
+     * Constructor.
+     * @param panel panel to paint to.
+     */
     public Window(JPanel panel) {
         this.panel = panel;
     }

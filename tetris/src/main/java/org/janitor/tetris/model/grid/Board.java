@@ -1,4 +1,4 @@
-package org.janitor.tetris.model;
+package org.janitor.tetris.model.grid;
 
 import org.janitor.tetris.model.tetrominos.Tetromino;
 
@@ -11,6 +11,7 @@ public class Board {
     private boolean[][] grid;
 
     /**
+     * Constructor.
      * @param grid The grid to create board with
      */
     public Board(boolean[][] grid) {
@@ -52,19 +53,17 @@ public class Board {
     }
 
     /**
-     * Checks if an placed tetromino would overlap existing blocks at a specified position.
-     * In other words, could a tetromino be placed on a specified position.
+     * Checks if an grid placed on a specific position would overlap existing blocks at a specified position.
+     * In other words, could a set of blocks be placed on a specified position.
      *
-     * @param tetromino The tetromino to check
-     * @param position  The position where the tetromino is evaluated.
+     * @param gridToCheck   The grid to check
+     * @param position      The position of the upper left corner of the grid
      *
-     * @return Returns true if there are existing blocks where tetromino resied.
-     * Returns false if the tetromino could be added to the specified position
+     * @return Returns true if there are existing blocks where the grid would be places.
+     * Returns false if the grid could be added to the specified position
      */
-    public boolean doesTetrominoOverlapAtPosition(Tetromino tetromino, GridPosition position) {
-        boolean[][] gridToCheck = tetromino.getBlockGrid();
-
-        // Check that tetromino doesn't overlap array grid borders.
+    public boolean doesGridOverlapAtPosition(boolean[][] gridToCheck, GridPosition position) {
+        // Check that grid doesn't overlap array grid borders.
         if (position.x < 0 || position.y < 0) {
             return true;
         }

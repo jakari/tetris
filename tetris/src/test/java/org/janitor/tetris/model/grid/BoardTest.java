@@ -1,11 +1,10 @@
-package org.janitor.tetris.model;
+package org.janitor.tetris.model.grid;
 
-import org.janitor.tetris.model.tetrominos.L;
+import org.janitor.tetris.model.tetrominos.LShape;
 import org.janitor.tetris.model.tetrominos.Tetromino;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
-import static org.mockito.Mockito.*;
 
 public class BoardTest {
     @Test
@@ -20,7 +19,7 @@ public class BoardTest {
     @Test
     public void appendsTetrominoAndReturnsNewInstanceWithTetromnio() {
         boolean[][] grid = new boolean[4][10];
-        Tetromino l = new L();
+        Tetromino l = new LShape();
         l.getGridPosition().y = 1;
 
         Board board = new Board(grid);
@@ -46,12 +45,12 @@ public class BoardTest {
         boolean[][] grid = new boolean[5][5];
         Board board = new Board(grid);
 
-        assertTrue(board.doesTetrominoOverlapAtPosition(aTetromino(1, 1), new GridPosition(-1, 0)));
-        assertTrue(board.doesTetrominoOverlapAtPosition(aTetromino(1, 1), new GridPosition(0, -1)));
-        assertTrue(board.doesTetrominoOverlapAtPosition(aTetromino(1, 1), new GridPosition(5, 0)));
-        assertTrue(board.doesTetrominoOverlapAtPosition(aTetromino(2, 1), new GridPosition(4, 0)));
-        assertTrue(board.doesTetrominoOverlapAtPosition(aTetromino(1, 1), new GridPosition(0, 5)));
-        assertTrue(board.doesTetrominoOverlapAtPosition(aTetromino(1, 2), new GridPosition(0, 4)));
+        assertTrue(board.doesGridOverlapAtPosition(aGrid(1, 1), new GridPosition(-1, 0)));
+        assertTrue(board.doesGridOverlapAtPosition(aGrid(1, 1), new GridPosition(0, -1)));
+        assertTrue(board.doesGridOverlapAtPosition(aGrid(1, 1), new GridPosition(5, 0)));
+        assertTrue(board.doesGridOverlapAtPosition(aGrid(2, 1), new GridPosition(4, 0)));
+        assertTrue(board.doesGridOverlapAtPosition(aGrid(1, 1), new GridPosition(0, 5)));
+        assertTrue(board.doesGridOverlapAtPosition(aGrid(1, 2), new GridPosition(0, 4)));
     }
 
     @Test
@@ -61,7 +60,7 @@ public class BoardTest {
 
         grid[3][2] = true;
 
-        assertTrue(board.doesTetrominoOverlapAtPosition(aTetromino(1, 1), new GridPosition(2, 3)));
+        assertTrue(board.doesGridOverlapAtPosition(aGrid(1, 1), new GridPosition(2, 3)));
     }
 
     @Test
@@ -70,12 +69,11 @@ public class BoardTest {
         Board board = new Board(grid);
 
         boolean[][] tetrominoGrid = {{true, true}, {true, true}};
-        Tetromino tetromino = aTetromino(tetrominoGrid);
 
-        assertFalse(board.doesTetrominoOverlapAtPosition(tetromino, new GridPosition(0, 0)));
-        assertFalse(board.doesTetrominoOverlapAtPosition(tetromino, new GridPosition(3, 0)));
-        assertFalse(board.doesTetrominoOverlapAtPosition(tetromino, new GridPosition(3, 3)));
-        assertFalse(board.doesTetrominoOverlapAtPosition(tetromino, new GridPosition(0, 3)));
+        assertFalse(board.doesGridOverlapAtPosition(tetrominoGrid, new GridPosition(0, 0)));
+        assertFalse(board.doesGridOverlapAtPosition(tetrominoGrid, new GridPosition(3, 0)));
+        assertFalse(board.doesGridOverlapAtPosition(tetrominoGrid, new GridPosition(3, 3)));
+        assertFalse(board.doesGridOverlapAtPosition(tetrominoGrid, new GridPosition(0, 3)));
     }
 
     @Test
@@ -88,10 +86,10 @@ public class BoardTest {
 
         boolean[][] tetrominoGrid = {{false, true}};
 
-        assertFalse(board.doesTetrominoOverlapAtPosition(aTetromino(tetrominoGrid), new GridPosition(2, 3)));
+        assertFalse(board.doesGridOverlapAtPosition(tetrominoGrid, new GridPosition(2, 3)));
     }
 
-    private Tetromino aTetromino(int width, int height) {
+    private boolean[][] aGrid(int width, int height) {
         boolean[][] grid = new boolean[height][width];
 
         for (int y = 0; y < height; y++) {
@@ -100,13 +98,6 @@ public class BoardTest {
             }
         }
 
-        return aTetromino(grid);
-    }
-
-    private Tetromino aTetromino(boolean[][] grid) {
-        Tetromino t = mock(Tetromino.class);
-        when(t.getBlockGrid()).thenReturn(grid);
-
-        return t;
+        return grid;
     }
 }

@@ -1,7 +1,9 @@
-package org.janitor.tetris.model;
+package org.janitor.tetris.model.game;
 
 import static org.mockito.Mockito.*;
 
+import org.janitor.tetris.model.grid.Board;
+import org.janitor.tetris.model.grid.GridPosition;
 import org.janitor.tetris.model.tetrominos.Tetromino;
 import org.janitor.tetris.ui.GameBoard;
 import org.janitor.tetris.util.MatchesTwoDimensionalBooleanArray;
@@ -20,6 +22,7 @@ public class GameTest {
     private GridPosition tetrominoPosition;
     private boolean[][] grid;
     private Movement movement;
+    private boolean[][] tetrominoGrid;
 
     @Before
     public void setUp() {
@@ -32,7 +35,8 @@ public class GameTest {
         grid = new boolean[3][3];
         movement = mock(Movement.class);
 
-        when(tetromino.getBlockGrid()).thenReturn(new boolean[][] {{true, true}, {true, true}});
+        tetrominoGrid = new boolean[][] {{true, true}, {true, true}};
+        when(tetromino.getBlockGrid()).thenReturn(tetrominoGrid);
         when(tetromino.getGridPosition()).thenReturn(tetrominoPosition);
         when(tetromino.getWidth()).thenReturn(2);
         when(tetromino.getHeight()).thenReturn(2);
@@ -68,7 +72,7 @@ public class GameTest {
 
     @Test
     public void doesntTickOverGrid() {
-        when(staticBoard.doesTetrominoOverlapAtPosition(tetromino, new GridPosition(4, 1))).thenReturn(false);
+        when(staticBoard.doesGridOverlapAtPosition(tetrominoGrid, new GridPosition(4, 1))).thenReturn(false);
 
         game.tick();
 
@@ -76,7 +80,7 @@ public class GameTest {
 
         tetromino.getGridPosition().y++;
 
-        when(staticBoard.doesTetrominoOverlapAtPosition(tetromino, new GridPosition(4, 2))).thenReturn(true);
+        when(staticBoard.doesGridOverlapAtPosition(tetrominoGrid, new GridPosition(4, 2))).thenReturn(true);
         game.tick();
 
         verify(r, times(2)).getNextTetromino();
@@ -89,6 +93,32 @@ public class GameTest {
         assertEquals(4, tetrominoPosition.x);
         game.tick();
         assertEquals(4, tetrominoPosition.x);
+    }
+
+    @Test
+    public void rotatesTetrominoToLeft() {
+        boolean[][] representation = new boolean[0][0];
+
+        when(tetromino.getRotatedGridRepresentation()).thenReturn(representation);
+        when(staticBoard.doesGridOverlapAtPosition(representation, tetrominoPosition)).thenReturn(false);
+
+        game.rotateTetromino();
+
+        verify(tetromino).rotateLeft();
+        verify(view, times(2)).update(grid);
+    }
+
+    @Test
+    public void doesntRotateWhenGridOverlaps() {
+        boolean[][] representation = new boolean[0][0];
+
+        when(tetromino.getRotatedGridRepresentation()).thenReturn(representation);
+        when(staticBoard.doesGridOverlapAtPosition(representation, tetrominoPosition)).thenReturn(true);
+
+        game.rotateTetromino();
+
+        verify(tetromino, never()).rotateLeft();
+        verify(view, times(1)).update(grid);
     }
 
     private void shouldRepaintBoard() {

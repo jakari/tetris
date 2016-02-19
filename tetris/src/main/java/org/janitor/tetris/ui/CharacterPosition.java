@@ -1,12 +1,13 @@
 package org.janitor.tetris.ui;
 
 /**
- * The character position helper class converts a board position
+ * The character position helper class converts a board position.
  *
  * todo This class is not finished, It should be refactored and move the pixel conversion completely away.
  */
 public class CharacterPosition extends Position {
     /**
+     * Constructor.
      * @param charX A board grid x asis
      * @param charY A board grid y axis
      */
@@ -21,7 +22,7 @@ public class CharacterPosition extends Position {
     public static final int FONT_SPACING_Y = 5;
 
     /**
-     * Converts a pixel to real paintable pixels
+     * Converts a pixel to real paintable pixels.
      * @param pixels pixels to convert
      * @return converted pixel size
      */
