@@ -25,7 +25,7 @@ under the License.
     <language>en-us</language>
     <copyright>&#169;2016</copyright>
     <item>
-      <title>File: 14,
+      <title>File: 20,
              Errors: 0,
              Warnings: 0,
              Infos: 0
@@ -46,34 +46,6 @@ under the License.
           <tbody>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#org.janitor.tetris.model.Movement.java">org/janitor/tetris/model/Movement.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#org.janitor.tetris.model.GameTickTask.java">org/janitor/tetris/model/GameTickTask.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="${project.url}/checkstyle.html#org.janitor.tetris.ui.Character.java">org/janitor/tetris/ui/Character.java</a>
                 </td>
                 <td>
@@ -88,7 +60,35 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#org.janitor.tetris.model.Board.java">org/janitor/tetris/model/Board.java</a>
+                  <a href="${project.url}/checkstyle.html#org.janitor.tetris.model.tetrominos.BlockShape.java">org/janitor/tetris/model/tetrominos/BlockShape.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#org.janitor.tetris.model.tetrominos.SShape.java">org/janitor/tetris/model/tetrominos/SShape.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#org.janitor.tetris.model.game.TetrominoRandomizer.java">org/janitor/tetris/model/game/TetrominoRandomizer.java</a>
                 </td>
                 <td>
                   0
@@ -130,7 +130,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#org.janitor.tetris.model.Game.java">org/janitor/tetris/model/Game.java</a>
+                  <a href="${project.url}/checkstyle.html#org.janitor.tetris.model.grid.Board.java">org/janitor/tetris/model/grid/Board.java</a>
                 </td>
                 <td>
                   0
@@ -144,7 +144,63 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#org.janitor.tetris.model.GridPosition.java">org/janitor/tetris/model/GridPosition.java</a>
+                  <a href="${project.url}/checkstyle.html#org.janitor.tetris.model.tetrominos.ZShape.java">org/janitor/tetris/model/tetrominos/ZShape.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#org.janitor.tetris.model.tetrominos.LineShape.java">org/janitor/tetris/model/tetrominos/LineShape.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#org.janitor.tetris.model.tetrominos.TShape.java">org/janitor/tetris/model/tetrominos/TShape.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#org.janitor.tetris.model.tetrominos.InverseLShape.java">org/janitor/tetris/model/tetrominos/InverseLShape.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#org.janitor.tetris.model.tetrominos.LShape.java">org/janitor/tetris/model/tetrominos/LShape.java</a>
                 </td>
                 <td>
                   0
@@ -186,7 +242,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#org.janitor.tetris.ui.Window.java">org/janitor/tetris/ui/Window.java</a>
+                  <a href="${project.url}/checkstyle.html#org.janitor.tetris.model.grid.GridPosition.java">org/janitor/tetris/model/grid/GridPosition.java</a>
                 </td>
                 <td>
                   0
@@ -200,7 +256,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#org.janitor.tetris.model.TetrominoRandomizer.java">org/janitor/tetris/model/TetrominoRandomizer.java</a>
+                  <a href="${project.url}/checkstyle.html#org.janitor.tetris.ui.Window.java">org/janitor/tetris/ui/Window.java</a>
                 </td>
                 <td>
                   0
@@ -228,7 +284,35 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#org.janitor.tetris.model.tetrominos.L.java">org/janitor/tetris/model/tetrominos/L.java</a>
+                  <a href="${project.url}/checkstyle.html#org.janitor.tetris.model.game.GameTickTask.java">org/janitor/tetris/model/game/GameTickTask.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#org.janitor.tetris.model.game.Game.java">org/janitor/tetris/model/game/Game.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#org.janitor.tetris.model.game.Movement.java">org/janitor/tetris/model/game/Movement.java</a>
                 </td>
                 <td>
                   0
