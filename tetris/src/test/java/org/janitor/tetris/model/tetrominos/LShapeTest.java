@@ -1,8 +1,6 @@
 package org.janitor.tetris.model.tetrominos;
 
-import org.junit.Test;
-
-public class LTest extends TetrominoTest {
+public class LShapeTest extends TetrominoTest {
     @Override
     protected int getWidth() {
         return 3;
@@ -10,7 +8,7 @@ public class LTest extends TetrominoTest {
 
     @Override
     protected Tetromino createTetromino() {
-        return new L();
+        return new LShape();
     }
 
     @Override

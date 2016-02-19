@@ -1,12 +1,15 @@
 package org.janitor.tetris.model.tetrominos;
 
-import org.janitor.tetris.model.GridPosition;
+import org.janitor.tetris.model.grid.GridPosition;
 
 /**
- * A L-shaped tetromino
+ * A L-shaped tetromino.
  */
-public class L extends Tetromino {
-    public L() {
+public class LShape extends Tetromino {
+    /**
+     * Constructor.
+     */
+    public LShape() {
         p = new GridPosition(3, 0);
         blockGrid = new boolean[][] {
             {true, true, true},
