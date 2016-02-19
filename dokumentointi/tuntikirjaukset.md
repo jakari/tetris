@@ -11,3 +11,5 @@
 8.2.2016,  2h: Pelialueen rakentamista
 9.2.2016,  2h: Pelialueen rakentamista
 11.2.2016, 3,5h: Testien kirjoittelua ja viimeistelyä.
+15.2.2016: 2h: Lisätty tetrominoja
+19.2.2016: 4h: Raporttien generointia, dokumentointia
