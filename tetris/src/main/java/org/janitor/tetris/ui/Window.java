@@ -22,7 +22,6 @@ public class Window implements Runnable {
         JFrame frame = new JFrame("Tetris");
         JPanel main = new JPanel();
         frame.setVisible(false);
-        main.setBackground(Color.BLACK);
 
         frame.setLayout(new BorderLayout());
 
@@ -38,7 +37,7 @@ public class Window implements Runnable {
         center.setBackground(Color.black);
 
         frame.setResizable(false);
-        frame.setMinimumSize(new Dimension(800, 600));
+        frame.setMinimumSize(new Dimension(1200, 800));
         frame.add(center);
 
         frame.pack();

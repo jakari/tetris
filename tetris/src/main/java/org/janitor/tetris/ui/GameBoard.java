@@ -17,7 +17,7 @@ public class GameBoard extends JPanel {
         super();
         setFocusable(true);
         setBackground(Color.BLACK);
-        setPreferredSize(new Dimension(138 * CharacterPosition.PIXEL_SIZE, 275 * CharacterPosition.PIXEL_SIZE));
+        setPreferredSize(new Dimension(CharacterPosition.xCharPosToPx(12), CharacterPosition.yCharPosToPx(22)));
         chars = new Character();
     }
 
@@ -30,12 +30,21 @@ public class GameBoard extends JPanel {
         }
 
         for (int y = 0; y < 20; y++) {
+            chars.leftBorder(new CharacterPosition(0, y), graphics);
+            chars.rightBorder(new CharacterPosition(11, y), graphics);
+
             for (int x = 0; x < 10; x++) {
                 if (board[y][x]) {
-                    chars.block(new CharacterPosition(x, y), graphics);
-                    chars.block(new CharacterPosition(x, y), graphics);
+                    chars.block(new CharacterPosition(x+1, y), graphics);
+                    chars.block(new CharacterPosition(x+1, y), graphics);
                 } else {
-                    chars.dot(new CharacterPosition(x, y), graphics);
+                    chars.dot(new CharacterPosition(x+1, y), graphics);
+                }
+
+                if (y == 0) {
+                    chars.leftBorder(new CharacterPosition(0, 20), graphics);
+                    chars.rightBorder(new CharacterPosition(11, 20), graphics);
+                    chars.bottomBorder(new CharacterPosition(x+1, 20), graphics);
                 }
             }
         }

@@ -16,10 +16,10 @@ public class CharacterPosition extends Position {
     }
 
     public static final int PIXEL_SIZE = 2;
-    public static final int FONT_X = 5 + 2 + 5;
-    public static final int FONT_Y = 9;
+    public static final int FONT_X = 6 + 2 + 6;
+    public static final int FONT_Y = 10;
     public static final int FONT_SPACING_X = 2;
-    public static final int FONT_SPACING_Y = 5;
+    public static final int FONT_SPACING_Y = 6;
 
     /**
      * Converts a pixel to real paintable pixels.
@@ -44,7 +44,7 @@ public class CharacterPosition extends Position {
      * @param y the grid y axis position
      * @return a paintable pixel y axis
      */
-    private static int yCharPosToPx(int y) {
+    public static int yCharPosToPx(int y) {
         return px((y * FONT_Y) + (y * FONT_SPACING_Y));
     }
 }
