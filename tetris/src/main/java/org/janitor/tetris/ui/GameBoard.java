@@ -25,6 +25,10 @@ public class GameBoard extends JPanel {
     protected void paintComponent(Graphics graphics) {
         super.paintComponent(graphics);
 
+        if (board == null){
+            return;
+        }
+
         for (int y = 0; y < 20; y++) {
             for (int x = 0; x < 10; x++) {
                 if (board[y][x]) {

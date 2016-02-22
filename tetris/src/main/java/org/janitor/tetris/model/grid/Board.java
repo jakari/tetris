@@ -2,13 +2,15 @@ package org.janitor.tetris.model.grid;
 
 import org.janitor.tetris.model.tetrominos.Tetromino;
 
+import java.util.Arrays;
+
 /**
  * Defines the tetromino board grid model.
  *
  * This class is immutable.
  */
 public class Board {
-    private boolean[][] grid;
+    private final boolean[][] grid;
 
     /**
      * Constructor.
@@ -83,5 +85,46 @@ public class Board {
         }
 
         return false;
+    }
+
+    /**
+     * Removes rows that are filled with blocks.
+     * @return Returns result containing the number of rows removed and a new
+     * Board representing the new state.
+     */
+    public RemovedRowsResult removeFilledRows() {
+        int fullRows = 0;
+        boolean[][] newGrid = new boolean[grid.length][grid[0].length];
+
+        // Marks the current row pointer in the new grid.
+        int newY = grid.length-1;
+
+        // Loop through existing rows and search for rows that are full.
+        for (int y = newY; y >= 0; y--) {
+            boolean isFull = true;
+
+            // Loop through each cell in current row and check for filled blocks
+            for (boolean c : grid[y]) {
+                // If a cell is found with a block not filled, stop searching
+                // and flag row as not full
+                if (!c) {
+                    isFull = false;
+                    break;
+                }
+            }
+
+            // When row is not full, it is copied to the new grid.
+            // Full rows are not copied into the new grid, but the next
+            // row is stacked downwards, so the newY is not incremented
+            // when the row is full.
+            if (!isFull) {
+                newGrid[newY] = grid[y];
+                newY--;
+            } else {
+                fullRows++;
+            }
+        }
+
+        return new RemovedRowsResult(fullRows, new Board(newGrid));
     }
 }

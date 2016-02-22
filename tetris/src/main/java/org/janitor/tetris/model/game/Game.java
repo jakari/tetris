@@ -44,17 +44,22 @@ public class Game {
      */
     public void tick() {
         if (!canTetrominoMoveDown()) {
-            board = board.addTetromino(tetromino);
             nextTetromino();
+            update();
         } else {
             movement.moveDown();
         }
     }
 
     /**
-     * Initializes a screen refresh.
+     * Initializes a game update.
      */
     public void update() {
+        if (!canTetrominoMoveDown()) {
+            board = board.addTetromino(tetromino).removeFilledRows().board;
+            nextTetromino();
+        }
+
         this.view.update(board.addTetromino(tetromino).getGrid());
     }
 
@@ -72,7 +77,6 @@ public class Game {
     public void nextTetromino() {
         tetromino = randomizer.getNextTetromino();
         movement.setTetromino(tetromino);
-        update();
     }
 
     /**

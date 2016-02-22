@@ -21,8 +21,6 @@ public class Tetris {
      */
     public static void main(String[] args) {
         GameBoard view = new GameBoard();
-        Window w = new Window(view);
-        SwingUtilities.invokeLater(w);
         Game g = new Game(
                 view,
                 new TetrominoRandomizer(),
@@ -30,6 +28,9 @@ public class Tetris {
         );
         g.setMovement(new Movement(g));
         g.nextTetromino();
+
+        Window w = new Window(view);
+        SwingUtilities.invokeLater(w);
 
         Timer t = new Timer();
 
