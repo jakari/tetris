@@ -4,6 +4,7 @@ import static org.mockito.Mockito.*;
 
 import org.janitor.tetris.model.grid.Board;
 import org.janitor.tetris.model.grid.GridPosition;
+import org.janitor.tetris.model.grid.RemovedRowsResult;
 import org.janitor.tetris.model.tetrominos.Tetromino;
 import org.janitor.tetris.ui.GameBoard;
 import org.janitor.tetris.util.MatchesTwoDimensionalBooleanArray;
@@ -67,7 +68,9 @@ public class GameTest {
 
     @Test
     public void getsAnewTetrominoAndPaintsView() {
-        shouldRepaintBoard();
+        game.update();
+
+        shouldRepaintBoard(1);
     }
 
     @Test
@@ -80,10 +83,23 @@ public class GameTest {
 
         tetromino.getGridPosition().y++;
 
+        boolean[][] updatedGrid = {{true}};
         when(staticBoard.doesGridOverlapAtPosition(tetrominoGrid, new GridPosition(4, 2))).thenReturn(true);
+        Board boardWithAddedTetromino = mock(Board.class);
+        Board boardWithRemovedRows = mock(Board.class);
+        Board lastBoard = mock(Board.class);
+        RemovedRowsResult result = new RemovedRowsResult(0, boardWithRemovedRows);
+        when(staticBoard.addTetromino(tetromino))
+            .thenReturn(boardWithAddedTetromino);
+        when(boardWithAddedTetromino.removeFilledRows()).thenReturn(result);
+        when(boardWithRemovedRows.addTetromino(tetromino)).thenReturn(lastBoard);
+        when(lastBoard.getGrid()).thenReturn(updatedGrid);
+
         game.tick();
 
-        verify(r, times(2)).getNextTetromino();
+        verify(view).update(updatedGrid);
+
+        verify(r, times(3)).getNextTetromino();
 
         verify(movement, times(1)).moveDown();
     }
@@ -105,7 +121,7 @@ public class GameTest {
         game.rotateTetromino();
 
         verify(tetromino).rotateLeft();
-        verify(view, times(2)).update(grid);
+        verify(view, times(1)).update(grid);
     }
 
     @Test
@@ -118,11 +134,7 @@ public class GameTest {
         game.rotateTetromino();
 
         verify(tetromino, never()).rotateLeft();
-        verify(view, times(1)).update(grid);
-    }
-
-    private void shouldRepaintBoard() {
-        shouldRepaintBoard(1);
+        verify(view, never()).update(grid);
     }
 
     private void shouldRepaintBoard(int shouldBeCalledTimes) {

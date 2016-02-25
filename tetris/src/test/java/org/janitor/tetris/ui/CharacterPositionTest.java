@@ -15,7 +15,7 @@ public class CharacterPositionTest {
         int y = 5;
 
         CharacterPosition p = new CharacterPosition(x, y);
-        assertEquals(280, p.x);
-        assertEquals(140, p.y);
+        assertEquals(320, p.x);
+        assertEquals(160, p.y);
     }
 }

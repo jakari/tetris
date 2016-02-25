@@ -31,10 +31,10 @@ public class CharacterTest {
 
         verify(g).setColor(color);
         verify(g).fillRect(
-                p.x + CharacterPosition.px(2)+CharacterPosition.FONT_X,
+                p.x + CharacterPosition.px(3)+CharacterPosition.FONT_X,
                 p.y + CharacterPosition.px(8),
-                1,
-                2
+                2,
+                4
         );
     }
 
@@ -46,8 +46,8 @@ public class CharacterTest {
         verify(g).fillRect(
                 x,
                 y,
-                CharacterPosition.PIXEL_SIZE*5,
-                CharacterPosition.PIXEL_SIZE*9
+                CharacterPosition.PIXEL_SIZE*6,
+                CharacterPosition.PIXEL_SIZE*10
         );
     }
 }
