@@ -30,30 +30,29 @@
 <a class="jxr_linenumber" name="L22" href="#L22">22</a>          JFrame frame = <strong class="jxr_keyword">new</strong> JFrame(<span class="jxr_string">"Tetris"</span>);
 <a class="jxr_linenumber" name="L23" href="#L23">23</a>          JPanel main = <strong class="jxr_keyword">new</strong> JPanel();
 <a class="jxr_linenumber" name="L24" href="#L24">24</a>          frame.setVisible(false);
-<a class="jxr_linenumber" name="L25" href="#L25">25</a>          main.setBackground(Color.BLACK);
-<a class="jxr_linenumber" name="L26" href="#L26">26</a>  
-<a class="jxr_linenumber" name="L27" href="#L27">27</a>          frame.setLayout(<strong class="jxr_keyword">new</strong> BorderLayout());
-<a class="jxr_linenumber" name="L28" href="#L28">28</a>  
-<a class="jxr_linenumber" name="L29" href="#L29">29</a>          <em class="jxr_comment">// To go fullscreen uncomment this</em>
-<a class="jxr_linenumber" name="L30" href="#L30">30</a>          <em class="jxr_comment">// Todo still undecided wether fullscreen is desired...</em>
-<a class="jxr_linenumber" name="L31" href="#L31">31</a>          <em class="jxr_comment">/*GraphicsDevice gd =</em>
-<a class="jxr_linenumber" name="L32" href="#L32">32</a>  <em class="jxr_comment">                GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();</em>
-<a class="jxr_linenumber" name="L33" href="#L33">33</a>  <em class="jxr_comment">        frame.setUndecorated(true);</em>
-<a class="jxr_linenumber" name="L34" href="#L34">34</a>  <em class="jxr_comment">        gd.setFullScreenWindow(frame); */</em>
-<a class="jxr_linenumber" name="L35" href="#L35">35</a>  
-<a class="jxr_linenumber" name="L36" href="#L36">36</a>          JPanel center = <strong class="jxr_keyword">new</strong> JPanel(<strong class="jxr_keyword">new</strong> GridBagLayout());
-<a class="jxr_linenumber" name="L37" href="#L37">37</a>          center.add(panel, <strong class="jxr_keyword">new</strong> GridBagConstraints());
-<a class="jxr_linenumber" name="L38" href="#L38">38</a>          center.setBackground(Color.black);
-<a class="jxr_linenumber" name="L39" href="#L39">39</a>  
-<a class="jxr_linenumber" name="L40" href="#L40">40</a>          frame.setResizable(false);
-<a class="jxr_linenumber" name="L41" href="#L41">41</a>          frame.setMinimumSize(<strong class="jxr_keyword">new</strong> Dimension(800, 600));
-<a class="jxr_linenumber" name="L42" href="#L42">42</a>          frame.add(center);
-<a class="jxr_linenumber" name="L43" href="#L43">43</a>  
-<a class="jxr_linenumber" name="L44" href="#L44">44</a>          frame.pack();
-<a class="jxr_linenumber" name="L45" href="#L45">45</a>          frame.setLocationRelativeTo(<strong class="jxr_keyword">null</strong>);
-<a class="jxr_linenumber" name="L46" href="#L46">46</a>          frame.setVisible(<strong class="jxr_keyword">true</strong>);
-<a class="jxr_linenumber" name="L47" href="#L47">47</a>      }
-<a class="jxr_linenumber" name="L48" href="#L48">48</a>  }
+<a class="jxr_linenumber" name="L25" href="#L25">25</a>  
+<a class="jxr_linenumber" name="L26" href="#L26">26</a>          frame.setLayout(<strong class="jxr_keyword">new</strong> BorderLayout());
+<a class="jxr_linenumber" name="L27" href="#L27">27</a>  
+<a class="jxr_linenumber" name="L28" href="#L28">28</a>          <em class="jxr_comment">// To go fullscreen uncomment this</em>
+<a class="jxr_linenumber" name="L29" href="#L29">29</a>          <em class="jxr_comment">// Todo still undecided wether fullscreen is desired...</em>
+<a class="jxr_linenumber" name="L30" href="#L30">30</a>          <em class="jxr_comment">/*GraphicsDevice gd =</em>
+<a class="jxr_linenumber" name="L31" href="#L31">31</a>  <em class="jxr_comment">                GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();</em>
+<a class="jxr_linenumber" name="L32" href="#L32">32</a>  <em class="jxr_comment">        frame.setUndecorated(true);</em>
+<a class="jxr_linenumber" name="L33" href="#L33">33</a>  <em class="jxr_comment">        gd.setFullScreenWindow(frame); */</em>
+<a class="jxr_linenumber" name="L34" href="#L34">34</a>  
+<a class="jxr_linenumber" name="L35" href="#L35">35</a>          JPanel center = <strong class="jxr_keyword">new</strong> JPanel(<strong class="jxr_keyword">new</strong> GridBagLayout());
+<a class="jxr_linenumber" name="L36" href="#L36">36</a>          center.add(panel, <strong class="jxr_keyword">new</strong> GridBagConstraints());
+<a class="jxr_linenumber" name="L37" href="#L37">37</a>          center.setBackground(Color.black);
+<a class="jxr_linenumber" name="L38" href="#L38">38</a>  
+<a class="jxr_linenumber" name="L39" href="#L39">39</a>          frame.setResizable(false);
+<a class="jxr_linenumber" name="L40" href="#L40">40</a>          frame.setMinimumSize(<strong class="jxr_keyword">new</strong> Dimension(1200, 800));
+<a class="jxr_linenumber" name="L41" href="#L41">41</a>          frame.add(center);
+<a class="jxr_linenumber" name="L42" href="#L42">42</a>  
+<a class="jxr_linenumber" name="L43" href="#L43">43</a>          frame.pack();
+<a class="jxr_linenumber" name="L44" href="#L44">44</a>          frame.setLocationRelativeTo(<strong class="jxr_keyword">null</strong>);
+<a class="jxr_linenumber" name="L45" href="#L45">45</a>          frame.setVisible(<strong class="jxr_keyword">true</strong>);
+<a class="jxr_linenumber" name="L46" href="#L46">46</a>      }
+<a class="jxr_linenumber" name="L47" href="#L47">47</a>  }
 </pre>
 <hr/>
 <div id="footer">Copyright &#169; 2016. All rights reserved.</div>

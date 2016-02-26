@@ -45,6 +45,10 @@ public class Game {
     public void tick() {
         if (!canTetrominoMoveDown()) {
             nextTetromino();
+            if (!canTetrominoMoveDown()) {
+                isRunning = false;
+            }
+
             update();
         } else {
             movement.moveDown();

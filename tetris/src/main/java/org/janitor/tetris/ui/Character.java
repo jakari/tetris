@@ -52,139 +52,146 @@ public class Character {
         );
     }
 
+    /**
+     * Writes a left border character.
+     * @param p Position of character
+     * @param g Graphics to draw to
+     */
     public void leftBorder(Position p, Graphics g) {
         g.setColor(charColor);
         g.fillRect(
-                p.x+CharacterPosition.px(4),
-                p.y+CharacterPosition.px(1),
+                p.x + CharacterPosition.px(4),
+                p.y + CharacterPosition.px(1),
                 CharacterPosition.px(1),
                 CharacterPosition.px(1)
         );
         g.fillRect(
-                p.x+CharacterPosition.px(3),
-                p.y+CharacterPosition.px(2),
+                p.x + CharacterPosition.px(3),
+                p.y + CharacterPosition.px(2),
                 CharacterPosition.px(1),
                 CharacterPosition.px(1)
         );
         g.fillRect(
-                p.x+CharacterPosition.px(2),
-                p.y+CharacterPosition.px(3),
+                p.x + CharacterPosition.px(2),
+                p.y + CharacterPosition.px(3),
                 CharacterPosition.px(1),
                 CharacterPosition.px(1)
         );
         g.fillRect(
-                p.x+CharacterPosition.px(1),
-                p.y+CharacterPosition.px(4),
+                p.x + CharacterPosition.px(1),
+                p.y + CharacterPosition.px(4),
                 CharacterPosition.px(1),
                 CharacterPosition.px(1)
         );
         g.fillRect(
-                p.x+CharacterPosition.px(0),
-                p.y+CharacterPosition.px(5),
+                p.x + CharacterPosition.px(0),
+                p.y + CharacterPosition.px(5),
                 CharacterPosition.px(1),
                 CharacterPosition.px(1)
         );
         g.fillRect(
-                p.x+CharacterPosition.px(1),
-                p.y+CharacterPosition.px(6),
+                p.x + CharacterPosition.px(1),
+                p.y + CharacterPosition.px(6),
                 CharacterPosition.px(1),
                 CharacterPosition.px(1)
         );
         g.fillRect(
-                p.x+CharacterPosition.px(2),
-                p.y+CharacterPosition.px(7),
+                p.x + CharacterPosition.px(2),
+                p.y + CharacterPosition.px(7),
                 CharacterPosition.px(1),
                 CharacterPosition.px(1)
         );
         g.fillRect(
-                p.x+CharacterPosition.px(3),
-                p.y+CharacterPosition.px(8),
+                p.x + CharacterPosition.px(3),
+                p.y + CharacterPosition.px(8),
                 CharacterPosition.px(1),
                 CharacterPosition.px(1)
         );
         g.fillRect(
-                p.x+CharacterPosition.px(4),
-                p.y+CharacterPosition.px(9),
+                p.x + CharacterPosition.px(4),
+                p.y + CharacterPosition.px(9),
                 CharacterPosition.px(1),
                 CharacterPosition.px(1)
         );
 
-        exclamationMark(
-                p.x+CharacterPosition.FONT_X,
-                p.y,
-                g
-        );
+        exclamationMark(p.x + CharacterPosition.FONT_X, p.y, g);
     }
 
+    /**
+     * Creates a right border character.
+     * @param p Position of character
+     * @param g Graphics to draw to
+     */
     public void rightBorder(Position p, Graphics g) {
-        int x = p.x+CharacterPosition.FONT_X;
+        int x = p.x + CharacterPosition.FONT_X;
 
         g.setColor(charColor);
         g.fillRect(
-                x+CharacterPosition.px(0),
-                p.y+CharacterPosition.px(1),
+                x + CharacterPosition.px(0),
+                p.y + CharacterPosition.px(1),
                 CharacterPosition.px(1),
                 CharacterPosition.px(1)
         );
         g.fillRect(
-                x+CharacterPosition.px(1),
-                p.y+CharacterPosition.px(2),
+                x + CharacterPosition.px(1),
+                p.y + CharacterPosition.px(2),
                 CharacterPosition.px(1),
                 CharacterPosition.px(1)
         );
         g.fillRect(
-                x+CharacterPosition.px(2),
-                p.y+CharacterPosition.px(3),
+                x + CharacterPosition.px(2),
+                p.y + CharacterPosition.px(3),
                 CharacterPosition.px(1),
                 CharacterPosition.px(1)
         );
         g.fillRect(
-                x+CharacterPosition.px(3),
-                p.y+CharacterPosition.px(4),
+                x + CharacterPosition.px(3),
+                p.y + CharacterPosition.px(4),
                 CharacterPosition.px(1),
                 CharacterPosition.px(1)
         );
         g.fillRect(
-                x+CharacterPosition.px(4),
-                p.y+CharacterPosition.px(5),
+                x + CharacterPosition.px(4),
+                p.y + CharacterPosition.px(5),
                 CharacterPosition.px(1),
                 CharacterPosition.px(1)
         );
         g.fillRect(
-                x+CharacterPosition.px(3),
-                p.y+CharacterPosition.px(6),
+                x + CharacterPosition.px(3),
+                p.y + CharacterPosition.px(6),
                 CharacterPosition.px(1),
                 CharacterPosition.px(1)
         );
         g.fillRect(
-                x+CharacterPosition.px(2),
-                p.y+CharacterPosition.px(7),
+                x + CharacterPosition.px(2),
+                p.y + CharacterPosition.px(7),
                 CharacterPosition.px(1),
                 CharacterPosition.px(1)
         );
         g.fillRect(
-                x+CharacterPosition.px(1),
-                p.y+CharacterPosition.px(8),
+                x + CharacterPosition.px(1),
+                p.y + CharacterPosition.px(8),
                 CharacterPosition.px(1),
                 CharacterPosition.px(1)
         );
         g.fillRect(
-                x+CharacterPosition.px(0),
-                p.y+CharacterPosition.px(9),
+                x + CharacterPosition.px(0),
+                p.y + CharacterPosition.px(9),
                 CharacterPosition.px(1),
                 CharacterPosition.px(1)
         );
 
-        exclamationMark(
-                p.x,
-                p.y,
-                g
-        );
+        exclamationMark(p.x, p.y, g);
     }
 
+    /**
+     * Draws a bottom border character.
+     * @param p Position of character
+     * @param g Graphics to draw to
+     */
     public void bottomBorder(Position p, Graphics g) {
         int x2 = p.x + CharacterPosition.FONT_X;
-        int y = p.y+CharacterPosition.yCharPosToPx(1);
+        int y = p.y + CharacterPosition.yCharPosToPx(1);
 
         equalsSign(p.x, p.y, g);
         equalsSign(x2, p.y, g);
@@ -221,25 +228,25 @@ public class Character {
         );
 
         g.fillRect(
-                x2+CharacterPosition.px(4),
+                x2 + CharacterPosition.px(4),
                 y,
                 CharacterPosition.px(1),
                 CharacterPosition.px(2)
         );
         g.fillRect(
-                x2+CharacterPosition.px(3),
+                x2 + CharacterPosition.px(3),
                 y + CharacterPosition.px(2),
                 CharacterPosition.px(1),
                 CharacterPosition.px(2)
         );
         g.fillRect(
-                x2+CharacterPosition.px(2),
+                x2 + CharacterPosition.px(2),
                 y + CharacterPosition.px(4),
                 CharacterPosition.px(1),
                 CharacterPosition.px(2)
         );
         g.fillRect(
-                x2+CharacterPosition.px(1),
+                x2 + CharacterPosition.px(1),
                 y + CharacterPosition.px(6),
                 CharacterPosition.px(1),
                 CharacterPosition.px(2)
@@ -255,13 +262,13 @@ public class Character {
     private void equalsSign(int x, int y, Graphics g) {
         g.fillRect(
                 x,
-                y+CharacterPosition.px(3),
+                y + CharacterPosition.px(3),
                 CharacterPosition.px(6),
                 CharacterPosition.px(2)
         );
         g.fillRect(
                 x,
-                y+CharacterPosition.px(6),
+                y + CharacterPosition.px(6),
                 CharacterPosition.px(6),
                 CharacterPosition.px(2)
         );
@@ -269,14 +276,14 @@ public class Character {
 
     private void exclamationMark(int x, int y, Graphics g) {
         g.fillRect(
-            x+CharacterPosition.px(2),
+            x + CharacterPosition.px(2),
             y,
             CharacterPosition.px(1),
             CharacterPosition.px(7)
         );
         g.fillRect(
-            x+CharacterPosition.px(2),
-            y+CharacterPosition.px(8),
+            x + CharacterPosition.px(2),
+            y + CharacterPosition.px(8),
             CharacterPosition.px(1),
             CharacterPosition.px(2)
         );

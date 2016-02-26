@@ -89,6 +89,28 @@ public class BoardTest {
         assertFalse(board.doesGridOverlapAtPosition(tetrominoGrid, new GridPosition(2, 3)));
     }
 
+    @Test
+    public void removesFilledRows() {
+        boolean[][] grid = {
+            {false, false, false},
+            {false, true, false},
+            {true, true, true},
+            {false, false, true}
+        };
+        boolean[][] expected = {
+            {false, false, false},
+            {false, false, false},
+            {false, true, false},
+            {false, false, true}
+        };
+
+        Board board = new Board(grid);
+        RemovedRowsResult result = board.removeFilledRows();
+
+        assertEquals(1, result.rowsRemoved);
+        assertArrayEquals(expected, result.board.getGrid());
+    }
+
     private boolean[][] aGrid(int width, int height) {
         boolean[][] grid = new boolean[height][width];
 

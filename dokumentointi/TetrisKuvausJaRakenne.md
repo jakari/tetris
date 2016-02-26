@@ -1,4 +1,4 @@
-**Aihe:** Tetris
+# Aihe: Tetris #
 
 Tavoitteena on tehdä tribuuttia eräälle maailman tunnetuimmista tietokonepeleistä ja luoda oma Tetris-klooni Javaa hyödyntäen.
 
@@ -15,6 +15,15 @@ Peliä ei voi voittaa, vaan tavoitteena on saada mahdollisimman paljon pisteitä
 
 Peli loppuu kun ruudulle ei enää mahdu tippumaan paloja.
 
+## Käyttöohjeet ##
+
+Pelin käyttö on erittäin yksinkertaista:
+
+`W` -näppäimestä pyöritetään tetrominoa.
+`S` -näppäimestä pudotetaan tetromino.
+`A` -näppäin siirtää tetrominoa vasemmalle.
+`D` -näppäin siirtää tetrominoa oikealle.
+
 ### Pelin rakenne ###
 
 Ohessa järjestelmän luokkakaavio
@@ -26,3 +35,9 @@ Sekvenssikaaviot tärkeimmistä toiminnoista:
 ![Game tick](gametick.png)
 
 ![Rotate tetromino](rotatetetromino.png)
+
+Pelin rakenne perustuu Game-luokkaan, joka ohjaa pelin toimintoja. Game-luokalla on oliomuuttujana luokka nimeltä Board. Tämä luokka sisältää varsinaisen kaksiulotteisen pelialueen, jota Game päivittää tarpeen mukaan.
+
+Game-luokka pyytää satunnaisia tetrominoja TetrominoRandomizer-luokalta, piirtää ne boardille joka taasen annetaan UI-puolelle piirrettäväksi näytölle.
+
+Movement-luokka kuuntelee käyttäjän antamia komentoja ja liikuttaa tetrominoa sen mukaisesti.  

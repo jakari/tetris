@@ -97,17 +97,17 @@ public class Board {
         boolean[][] newGrid = new boolean[grid.length][grid[0].length];
 
         // Marks the current row pointer in the new grid.
-        int newY = grid.length-1;
+        int newY = grid.length - 1;
 
         // Loop through existing rows and search for rows that are full.
         for (int y = newY; y >= 0; y--) {
             boolean isFull = true;
 
             // Loop through each cell in current row and check for filled blocks
-            for (boolean c : grid[y]) {
+            for (boolean cell : grid[y]) {
                 // If a cell is found with a block not filled, stop searching
                 // and flag row as not full
-                if (!c) {
+                if (!cell) {
                     isFull = false;
                     break;
                 }

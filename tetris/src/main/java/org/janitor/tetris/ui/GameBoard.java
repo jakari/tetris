@@ -25,7 +25,7 @@ public class GameBoard extends JPanel {
     protected void paintComponent(Graphics graphics) {
         super.paintComponent(graphics);
 
-        if (board == null){
+        if (board == null) {
             return;
         }
 
@@ -35,16 +35,16 @@ public class GameBoard extends JPanel {
 
             for (int x = 0; x < 10; x++) {
                 if (board[y][x]) {
-                    chars.block(new CharacterPosition(x+1, y), graphics);
-                    chars.block(new CharacterPosition(x+1, y), graphics);
+                    chars.block(new CharacterPosition(x + 1, y), graphics);
+                    chars.block(new CharacterPosition(x + 1, y), graphics);
                 } else {
-                    chars.dot(new CharacterPosition(x+1, y), graphics);
+                    chars.dot(new CharacterPosition(x + 1, y), graphics);
                 }
 
                 if (y == 0) {
                     chars.leftBorder(new CharacterPosition(0, 20), graphics);
                     chars.rightBorder(new CharacterPosition(11, 20), graphics);
-                    chars.bottomBorder(new CharacterPosition(x+1, 20), graphics);
+                    chars.bottomBorder(new CharacterPosition(x + 1, 20), graphics);
                 }
             }
         }

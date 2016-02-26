@@ -13,3 +13,6 @@
 11.2.2016, 3,5h: Testien kirjoittelua ja viimeistelyä.
 15.2.2016: 2h: Lisätty tetrominoja
 19.2.2016: 4h: Raporttien generointia, dokumentointia
+24.2.2016: 2h: Bugikorjauksia, lisätty rivien poisto, UI-lisäyksiä
+25.2.2016  2h: testien korjailua
+26.2.2016  1h: Dokumentaation päivitys
