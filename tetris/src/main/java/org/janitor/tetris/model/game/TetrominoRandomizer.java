@@ -13,9 +13,9 @@ public class TetrominoRandomizer {
      * @return Retrieves a new random tetromino
      */
     public Tetromino getNextTetromino() {
-        Random r = new Random();
+        Random random = new Random();
 
-        switch (r.nextInt(7)) {
+        switch (random.nextInt(7)) {
             case 0:
                 return new BlockShape();
             case 1:
@@ -32,6 +32,6 @@ public class TetrominoRandomizer {
                 return new ZShape();
         }
 
-        throw new Error("Internal tetromino randomizer error");
+        throw new Error("Internal tetromino random error");
     }
 }

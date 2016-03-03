@@ -37,13 +37,8 @@ public class Character {
      * @param g The graphics object to use painting on
      */
     public void block(Position p, Graphics g) {
-        g.setColor(charColor);
-        g.fillRect(
-                p.x,
-                p.y,
-                CharacterPosition.px(6),
-                CharacterPosition.px(10)
-        );
+        RectangleBuilder builder = new RectangleBuilder(charColor, g, p);
+        builder.fillRect(0, 0, 6, 10);
         g.fillRect(
                 p.x + CharacterPosition.FONT_SPACING_X + CharacterPosition.FONT_X,
                 p.y,
@@ -58,63 +53,21 @@ public class Character {
      * @param g Graphics to draw to
      */
     public void leftBorder(Position p, Graphics g) {
-        g.setColor(charColor);
-        g.fillRect(
-                p.x + CharacterPosition.px(4),
-                p.y + CharacterPosition.px(1),
-                CharacterPosition.px(1),
-                CharacterPosition.px(1)
-        );
-        g.fillRect(
-                p.x + CharacterPosition.px(3),
-                p.y + CharacterPosition.px(2),
-                CharacterPosition.px(1),
-                CharacterPosition.px(1)
-        );
-        g.fillRect(
-                p.x + CharacterPosition.px(2),
-                p.y + CharacterPosition.px(3),
-                CharacterPosition.px(1),
-                CharacterPosition.px(1)
-        );
-        g.fillRect(
-                p.x + CharacterPosition.px(1),
-                p.y + CharacterPosition.px(4),
-                CharacterPosition.px(1),
-                CharacterPosition.px(1)
-        );
-        g.fillRect(
-                p.x + CharacterPosition.px(0),
-                p.y + CharacterPosition.px(5),
-                CharacterPosition.px(1),
-                CharacterPosition.px(1)
-        );
-        g.fillRect(
-                p.x + CharacterPosition.px(1),
-                p.y + CharacterPosition.px(6),
-                CharacterPosition.px(1),
-                CharacterPosition.px(1)
-        );
-        g.fillRect(
-                p.x + CharacterPosition.px(2),
-                p.y + CharacterPosition.px(7),
-                CharacterPosition.px(1),
-                CharacterPosition.px(1)
-        );
-        g.fillRect(
-                p.x + CharacterPosition.px(3),
-                p.y + CharacterPosition.px(8),
-                CharacterPosition.px(1),
-                CharacterPosition.px(1)
-        );
-        g.fillRect(
-                p.x + CharacterPosition.px(4),
-                p.y + CharacterPosition.px(9),
-                CharacterPosition.px(1),
-                CharacterPosition.px(1)
-        );
+        RectangleBuilder builder = new RectangleBuilder(charColor, g, p);
+        builder.fillRect(4, 1, 1, 1);
+        builder.fillRect(3, 2, 1, 1);
+        builder.fillRect(2, 3, 1, 1);
+        builder.fillRect(1, 4, 1, 1);
+        builder.fillRect(0, 5, 1, 1);
+        builder.fillRect(1, 6, 1, 1);
+        builder.fillRect(2, 7, 1, 1);
+        builder.fillRect(3, 8, 1, 1);
+        builder.fillRect(4, 9, 1, 1);
 
-        exclamationMark(p.x + CharacterPosition.FONT_X, p.y, g);
+        exclamationMark(
+            new Position(p.x + CharacterPosition.FONT_X, p.y),
+            g
+        );
     }
 
     /**
@@ -123,65 +76,21 @@ public class Character {
      * @param g Graphics to draw to
      */
     public void rightBorder(Position p, Graphics g) {
-        int x = p.x + CharacterPosition.FONT_X;
+        Position basePosition =
+                new Position(p.x + CharacterPosition.FONT_X, p.y);
+        RectangleBuilder builder = new RectangleBuilder(charColor, g, basePosition);
 
-        g.setColor(charColor);
-        g.fillRect(
-                x + CharacterPosition.px(0),
-                p.y + CharacterPosition.px(1),
-                CharacterPosition.px(1),
-                CharacterPosition.px(1)
-        );
-        g.fillRect(
-                x + CharacterPosition.px(1),
-                p.y + CharacterPosition.px(2),
-                CharacterPosition.px(1),
-                CharacterPosition.px(1)
-        );
-        g.fillRect(
-                x + CharacterPosition.px(2),
-                p.y + CharacterPosition.px(3),
-                CharacterPosition.px(1),
-                CharacterPosition.px(1)
-        );
-        g.fillRect(
-                x + CharacterPosition.px(3),
-                p.y + CharacterPosition.px(4),
-                CharacterPosition.px(1),
-                CharacterPosition.px(1)
-        );
-        g.fillRect(
-                x + CharacterPosition.px(4),
-                p.y + CharacterPosition.px(5),
-                CharacterPosition.px(1),
-                CharacterPosition.px(1)
-        );
-        g.fillRect(
-                x + CharacterPosition.px(3),
-                p.y + CharacterPosition.px(6),
-                CharacterPosition.px(1),
-                CharacterPosition.px(1)
-        );
-        g.fillRect(
-                x + CharacterPosition.px(2),
-                p.y + CharacterPosition.px(7),
-                CharacterPosition.px(1),
-                CharacterPosition.px(1)
-        );
-        g.fillRect(
-                x + CharacterPosition.px(1),
-                p.y + CharacterPosition.px(8),
-                CharacterPosition.px(1),
-                CharacterPosition.px(1)
-        );
-        g.fillRect(
-                x + CharacterPosition.px(0),
-                p.y + CharacterPosition.px(9),
-                CharacterPosition.px(1),
-                CharacterPosition.px(1)
-        );
+        builder.fillRect(0, 1, 1, 1);
+        builder.fillRect(1, 2, 1, 1);
+        builder.fillRect(2, 3, 1, 1);
+        builder.fillRect(3, 4, 1, 1);
+        builder.fillRect(4, 5, 1, 1);
+        builder.fillRect(3, 6, 1, 1);
+        builder.fillRect(2, 7, 1, 1);
+        builder.fillRect(1, 8, 1, 1);
+        builder.fillRect(0, 9, 1, 1);
 
-        exclamationMark(p.x, p.y, g);
+        exclamationMark(p, g);
     }
 
     /**
@@ -193,99 +102,44 @@ public class Character {
         int x2 = p.x + CharacterPosition.FONT_X;
         int y = p.y + CharacterPosition.yCharPosToPx(1);
 
-        equalsSign(p.x, p.y, g);
-        equalsSign(x2, p.y, g);
-
-        g.fillRect(
-                p.x,
-                y,
-                CharacterPosition.px(1),
-                CharacterPosition.px(2)
+        Position leftBasePosition = new Position(p.x, y);
+        Position rightBasePosition = new Position(x2, y);
+        RectangleBuilder leftBuilder = new RectangleBuilder(
+            charColor,
+            g,
+            leftBasePosition
         );
-        g.fillRect(
-                p.x + CharacterPosition.px(1),
-                y + CharacterPosition.px(2),
-                CharacterPosition.px(1),
-                CharacterPosition.px(2)
-        );
-        g.fillRect(
-                p.x + CharacterPosition.px(2),
-                y + CharacterPosition.px(4),
-                CharacterPosition.px(1),
-                CharacterPosition.px(2)
-        );
-        g.fillRect(
-                p.x + CharacterPosition.px(3),
-                y + CharacterPosition.px(6),
-                CharacterPosition.px(1),
-                CharacterPosition.px(2)
-        );
-        g.fillRect(
-                p.x + CharacterPosition.px(4),
-                y + CharacterPosition.px(8),
-                CharacterPosition.px(1),
-                CharacterPosition.px(2)
+        RectangleBuilder rightBuilder = new RectangleBuilder(
+            charColor,
+            g,
+            rightBasePosition
         );
 
-        g.fillRect(
-                x2 + CharacterPosition.px(4),
-                y,
-                CharacterPosition.px(1),
-                CharacterPosition.px(2)
-        );
-        g.fillRect(
-                x2 + CharacterPosition.px(3),
-                y + CharacterPosition.px(2),
-                CharacterPosition.px(1),
-                CharacterPosition.px(2)
-        );
-        g.fillRect(
-                x2 + CharacterPosition.px(2),
-                y + CharacterPosition.px(4),
-                CharacterPosition.px(1),
-                CharacterPosition.px(2)
-        );
-        g.fillRect(
-                x2 + CharacterPosition.px(1),
-                y + CharacterPosition.px(6),
-                CharacterPosition.px(1),
-                CharacterPosition.px(2)
-        );
-        g.fillRect(
-                x2,
-                y + CharacterPosition.px(8),
-                CharacterPosition.px(1),
-                CharacterPosition.px(2)
-        );
+        leftBuilder.fillRect(0, 0, 1, 2);
+        leftBuilder.fillRect(1, 2, 1, 2);
+        leftBuilder.fillRect(2, 4, 1, 2);
+        leftBuilder.fillRect(3, 6, 1, 2);
+        leftBuilder.fillRect(4, 8, 1, 2);
+
+        equalsSign(new Position(p.x, p.y), g);
+        equalsSign(new Position(x2, p.y), g);
+
+        rightBuilder.fillRect(4, 0, 1, 2);
+        rightBuilder.fillRect(3, 2, 1, 2);
+        rightBuilder.fillRect(2, 4, 1, 2);
+        rightBuilder.fillRect(1, 6, 1, 2);
+        rightBuilder.fillRect(0, 8, 1, 2);
     }
 
-    private void equalsSign(int x, int y, Graphics g) {
-        g.fillRect(
-                x,
-                y + CharacterPosition.px(3),
-                CharacterPosition.px(6),
-                CharacterPosition.px(2)
-        );
-        g.fillRect(
-                x,
-                y + CharacterPosition.px(6),
-                CharacterPosition.px(6),
-                CharacterPosition.px(2)
-        );
+    private void equalsSign(Position p, Graphics g) {
+        RectangleBuilder builder = new RectangleBuilder(charColor, g, p);
+        builder.fillRect(0, 3, 6, 2);
+        builder.fillRect(0, 6, 6, 2);
     }
 
-    private void exclamationMark(int x, int y, Graphics g) {
-        g.fillRect(
-            x + CharacterPosition.px(2),
-            y,
-            CharacterPosition.px(1),
-            CharacterPosition.px(7)
-        );
-        g.fillRect(
-            x + CharacterPosition.px(2),
-            y + CharacterPosition.px(8),
-            CharacterPosition.px(1),
-            CharacterPosition.px(2)
-        );
+    private void exclamationMark(Position p, Graphics g) {
+        RectangleBuilder builder = new RectangleBuilder(charColor, g, p);
+        builder.fillRect(2, 0, 1, 7);
+        builder.fillRect(2, 8, 1, 2);
     }
 }

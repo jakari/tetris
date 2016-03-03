@@ -35,18 +35,18 @@ public class Board {
         boolean[][] newGrid = new boolean[grid.length][0];
 
         // Must perform deep clone to get a immutable copy of the array
-        for (int r = 0; r < grid.length; r++) {
-            newGrid[r] = grid[r].clone();
+        for (int rowIndex = 0; rowIndex < grid.length; rowIndex++) {
+            newGrid[rowIndex] = grid[rowIndex].clone();
         }
 
-        GridPosition p = t.getGridPosition();
+        GridPosition gridPosition = t.getGridPosition();
         boolean[][] rows = t.getBlockGrid();
 
-        for (int r = 0; r < rows.length; r++) {
-            for (int c = 0; c < rows[r].length; c++) {
+        for (int yIndex = 0; yIndex < rows.length; yIndex++) {
+            for (int xIndex = 0; xIndex < rows[yIndex].length; xIndex++) {
                 // Write to a existing block only if there is no existing block
-                if (!newGrid[r + p.y][c + p.x]) {
-                    newGrid[r + p.y][c + p.x] = rows[r][c];
+                if (!newGrid[yIndex + gridPosition.y][xIndex + gridPosition.x]) {
+                    newGrid[yIndex + gridPosition.y][xIndex + gridPosition.x] = rows[yIndex][xIndex];
                 }
             }
         }
@@ -76,9 +76,9 @@ public class Board {
             return true;
         }
 
-        for (int r = 0; r < gridToCheck.length; r++) {
-            for (int c = 0; c < gridToCheck[r].length; c++) {
-                if (grid[r + position.y][c + position.x] && gridToCheck[r][c]) {
+        for (int yIndex = 0; yIndex < gridToCheck.length; yIndex++) {
+            for (int xIndex = 0; xIndex < gridToCheck[yIndex].length; xIndex++) {
+                if (grid[yIndex + position.y][xIndex + position.x] && gridToCheck[yIndex][xIndex]) {
                     return true;
                 }
             }

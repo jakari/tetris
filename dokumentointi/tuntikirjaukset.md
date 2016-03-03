@@ -16,3 +16,4 @@
 24.2.2016: 2h: Bugikorjauksia, lisätty rivien poisto, UI-lisäyksiä
 25.2.2016  2h: testien korjailua
 26.2.2016  1h: Dokumentaation päivitys
+3.3.2016   3h: Refaktorointia ja viimeistelyä.
