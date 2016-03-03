@@ -43,18 +43,18 @@
 <a class="jxr_linenumber" name="L35" href="#L35">35</a>          <strong class="jxr_keyword">boolean</strong>[][] newGrid = <strong class="jxr_keyword">new</strong> <strong class="jxr_keyword">boolean</strong>[grid.length][0];
 <a class="jxr_linenumber" name="L36" href="#L36">36</a>  
 <a class="jxr_linenumber" name="L37" href="#L37">37</a>          <em class="jxr_comment">// Must perform deep clone to get a immutable copy of the array</em>
-<a class="jxr_linenumber" name="L38" href="#L38">38</a>          <strong class="jxr_keyword">for</strong> (<strong class="jxr_keyword">int</strong> r = 0; r &lt; grid.length; r++) {
-<a class="jxr_linenumber" name="L39" href="#L39">39</a>              newGrid[r] = grid[r].clone();
+<a class="jxr_linenumber" name="L38" href="#L38">38</a>          <strong class="jxr_keyword">for</strong> (<strong class="jxr_keyword">int</strong> rowIndex = 0; rowIndex &lt; grid.length; rowIndex++) {
+<a class="jxr_linenumber" name="L39" href="#L39">39</a>              newGrid[rowIndex] = grid[rowIndex].clone();
 <a class="jxr_linenumber" name="L40" href="#L40">40</a>          }
 <a class="jxr_linenumber" name="L41" href="#L41">41</a>  
-<a class="jxr_linenumber" name="L42" href="#L42">42</a>          <a href="../../../../../org/janitor/tetris/model/grid/GridPosition.html">GridPosition</a> p = t.getGridPosition();
+<a class="jxr_linenumber" name="L42" href="#L42">42</a>          <a href="../../../../../org/janitor/tetris/model/grid/GridPosition.html">GridPosition</a> gridPosition = t.getGridPosition();
 <a class="jxr_linenumber" name="L43" href="#L43">43</a>          <strong class="jxr_keyword">boolean</strong>[][] rows = t.getBlockGrid();
 <a class="jxr_linenumber" name="L44" href="#L44">44</a>  
-<a class="jxr_linenumber" name="L45" href="#L45">45</a>          <strong class="jxr_keyword">for</strong> (<strong class="jxr_keyword">int</strong> r = 0; r &lt; rows.length; r++) {
-<a class="jxr_linenumber" name="L46" href="#L46">46</a>              <strong class="jxr_keyword">for</strong> (<strong class="jxr_keyword">int</strong> c = 0; c &lt; rows[r].length; c++) {
+<a class="jxr_linenumber" name="L45" href="#L45">45</a>          <strong class="jxr_keyword">for</strong> (<strong class="jxr_keyword">int</strong> yIndex = 0; yIndex &lt; rows.length; yIndex++) {
+<a class="jxr_linenumber" name="L46" href="#L46">46</a>              <strong class="jxr_keyword">for</strong> (<strong class="jxr_keyword">int</strong> xIndex = 0; xIndex &lt; rows[yIndex].length; xIndex++) {
 <a class="jxr_linenumber" name="L47" href="#L47">47</a>                  <em class="jxr_comment">// Write to a existing block only if there is no existing block</em>
-<a class="jxr_linenumber" name="L48" href="#L48">48</a>                  <strong class="jxr_keyword">if</strong> (!newGrid[r + p.y][c + p.x]) {
-<a class="jxr_linenumber" name="L49" href="#L49">49</a>                      newGrid[r + p.y][c + p.x] = rows[r][c];
+<a class="jxr_linenumber" name="L48" href="#L48">48</a>                  <strong class="jxr_keyword">if</strong> (!newGrid[yIndex + gridPosition.y][xIndex + gridPosition.x]) {
+<a class="jxr_linenumber" name="L49" href="#L49">49</a>                      newGrid[yIndex + gridPosition.y][xIndex + gridPosition.x] = rows[yIndex][xIndex];
 <a class="jxr_linenumber" name="L50" href="#L50">50</a>                  }
 <a class="jxr_linenumber" name="L51" href="#L51">51</a>              }
 <a class="jxr_linenumber" name="L52" href="#L52">52</a>          }
@@ -84,9 +84,9 @@
 <a class="jxr_linenumber" name="L76" href="#L76">76</a>              <strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">true</strong>;
 <a class="jxr_linenumber" name="L77" href="#L77">77</a>          }
 <a class="jxr_linenumber" name="L78" href="#L78">78</a>  
-<a class="jxr_linenumber" name="L79" href="#L79">79</a>          <strong class="jxr_keyword">for</strong> (<strong class="jxr_keyword">int</strong> r = 0; r &lt; gridToCheck.length; r++) {
-<a class="jxr_linenumber" name="L80" href="#L80">80</a>              <strong class="jxr_keyword">for</strong> (<strong class="jxr_keyword">int</strong> c = 0; c &lt; gridToCheck[r].length; c++) {
-<a class="jxr_linenumber" name="L81" href="#L81">81</a>                  <strong class="jxr_keyword">if</strong> (grid[r + position.y][c + position.x] &amp;&amp; gridToCheck[r][c]) {
+<a class="jxr_linenumber" name="L79" href="#L79">79</a>          <strong class="jxr_keyword">for</strong> (<strong class="jxr_keyword">int</strong> yIndex = 0; yIndex &lt; gridToCheck.length; yIndex++) {
+<a class="jxr_linenumber" name="L80" href="#L80">80</a>              <strong class="jxr_keyword">for</strong> (<strong class="jxr_keyword">int</strong> xIndex = 0; xIndex &lt; gridToCheck[yIndex].length; xIndex++) {
+<a class="jxr_linenumber" name="L81" href="#L81">81</a>                  <strong class="jxr_keyword">if</strong> (grid[yIndex + position.y][xIndex + position.x] &amp;&amp; gridToCheck[yIndex][xIndex]) {
 <a class="jxr_linenumber" name="L82" href="#L82">82</a>                      <strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">true</strong>;
 <a class="jxr_linenumber" name="L83" href="#L83">83</a>                  }
 <a class="jxr_linenumber" name="L84" href="#L84">84</a>              }
